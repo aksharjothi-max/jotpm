@@ -5,7 +5,6 @@ const SECRET = process.env.APPROVAL_SECRET || "jotpm-approval-secret";
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const GITHUB_REPO = "aksharjothi-max/jotpm";
 const DRAFTS_PATH = "src/lib/drafts.json";
-const PUBLISHED_PATH = "src/lib/published.json";
 
 function generateToken(slug: string): string {
   return crypto.createHmac("sha256", SECRET).update(slug).digest("hex").slice(0, 16);
@@ -61,13 +60,9 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    // Get both files
-    const [{ content: drafts, sha: draftsSha }, { content: published, sha: publishedSha }] = await Promise.all([
-      getFileFromGitHub(DRAFTS_PATH),
-      getFileFromGitHub(PUBLISHED_PATH),
-    ]);
-
+    const { content: drafts, sha } = await getFileFromGitHub(DRAFTS_PATH);
     const draftIndex = drafts.findIndex((d: any) => d.slug === slug);
+    
     if (draftIndex < 0) {
       return NextResponse.json({ error: "Draft not found" }, { status: 404 });
     }
@@ -78,21 +73,9 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ message: "Already approved", slug, title: draft.title });
     }
 
-    // Modify in memory
-    const updatedDrafts = drafts.filter((d: any) => d.slug !== slug);
-    const updatedPublished = [...published, {
-      slug: draft.slug,
-      title: draft.title,
-      excerpt: draft.excerpt,
-      date: draft.date,
-      readTime: draft.readTime,
-      content: draft.content,
-      image: draft.image || null,
-    }];
-
-    // Update both files
-    await updateFileOnGitHub(DRAFTS_PATH, updatedDrafts, draftsSha, `Remove published: ${draft.title}`);
-    await updateFileOnGitHub(PUBLISHED_PATH, updatedPublished, publishedSha, `Publish: ${draft.title}`);
+    // Mark as approved
+    drafts[draftIndex].status = "approved";
+    await updateFileOnGitHub(DRAFTS_PATH, drafts, sha, `Approve: ${draft.title}`);
 
     return NextResponse.json({ message: "Approved", slug, title: draft.title });
   } catch (err: any) {
