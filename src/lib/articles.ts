@@ -68,6 +68,7 @@ const articles: Article[] = [
       "Most teams drown in dashboards. The best ones align around a single measure of customer value. Here's how to find yours.",
     date: "2026-09-02",
     readTime: "5 min read",
+    image: "/images/blog/north-star-metric.png",
     content: `
 <p>I once joined a team that tracked 47 KPIs. Forty-seven. Every Monday, the leadership meeting was a parade of dashboards — DAU, MAU, session duration, NPS, churn rate, expansion revenue, CAC, LTV, activation rate, time-to-value, and thirty-seven more.</p>
 
