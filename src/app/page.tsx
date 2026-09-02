@@ -1,33 +1,8 @@
 import Link from "next/link";
-
-const articles = [
-  {
-    slug: "growth-loops-not-funnels",
-    title: "Growth Loops, Not Funnels: A Product Manager's Reframe",
-    excerpt:
-      "Funnels leak. Loops compound. Why the most resilient growth strategies abandon the linear pipeline in favor of self-reinforcing systems.",
-    date: "2026-09-02",
-    readTime: "6 min read",
-  },
-  {
-    slug: "north-star-metric",
-    title: "Finding Your North Star: One Metric That Actually Matters",
-    excerpt:
-      "Most teams drown in dashboards. The best ones align around a single measure of customer value. Here's how to find yours.",
-    date: "2026-09-02",
-    readTime: "5 min read",
-  },
-  {
-    slug: "shipping-is-a-skill",
-    title: "Shipping Is a Skill, Not a Phase",
-    excerpt:
-      "The gap between a good idea and a live feature is where most PMs stall. A practical framework for getting from spec to shipped.",
-    date: "2026-09-02",
-    readTime: "7 min read",
-  },
-];
+import { getArticles } from "@/lib/data";
 
 export default function Home() {
+  const articles = getArticles();
   return (
     <>
       {/* Hero */}
