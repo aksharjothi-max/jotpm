@@ -5,6 +5,7 @@ export interface Article {
   date: string;
   readTime: string;
   content: string;
+  image?: string;
 }
 
 const articles: Article[] = [
@@ -15,6 +16,7 @@ const articles: Article[] = [
       "Funnels leak. Loops compound. Why the most resilient growth strategies abandon the linear pipeline in favor of self-reinforcing systems.",
     date: "2026-09-02",
     readTime: "6 min read",
+    image: "/images/blog/growth-loops-not-funnels.svg",
     content: `
 <p>The funnel is the most dangerous metaphor in product management. It's elegant, intuitive, and quietly wrong about how growth actually works.</p>
 

@@ -25,6 +25,16 @@ export default async function ArticlePage({
         ← Back to Blog
       </Link>
 
+      {article.image && (
+        <div className="mb-12 rounded-xl overflow-hidden border border-white/5">
+          <img
+            src={article.image}
+            alt={article.title}
+            className="w-full h-auto"
+          />
+        </div>
+      )}
+
       <header className="max-w-3xl mb-12">
         <div className="flex items-center gap-3 mb-4">
           <span className="text-sm text-[var(--muted)]">{article.date}</span>
