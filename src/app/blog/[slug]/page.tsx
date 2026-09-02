@@ -1,0 +1,49 @@
+import { getArticles, getArticleBySlug } from "@/lib/articles";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+
+export async function generateStaticParams() {
+  const articles = getArticles();
+  return articles.map((article) => ({ slug: article.slug }));
+}
+
+export default function ArticlePage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const article = getArticleBySlug(params.slug);
+  if (!article) notFound();
+
+  return (
+    <article className="max-w-6xl mx-auto px-6 py-20">
+      <Link
+        href="/blog"
+        className="inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-white transition-colors mb-12"
+      >
+        ← Back to Blog
+      </Link>
+
+      <header className="max-w-3xl mb-12">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-sm text-[var(--muted)]">{article.date}</span>
+          <span className="text-sm text-[var(--accent)]">·</span>
+          <span className="text-sm text-[var(--muted)]">
+            {article.readTime}
+          </span>
+        </div>
+        <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
+          {article.title}
+        </h1>
+        <p className="text-lg text-[var(--muted)] leading-relaxed">
+          {article.excerpt}
+        </p>
+      </header>
+
+      <div
+        className="prose"
+        dangerouslySetInnerHTML={{ __html: article.content }}
+      />
+    </article>
+  );
+}
