@@ -1,13 +1,1 @@
-[
-  {
-    "slug": "test-article",
-    "title": "Test Article",
-    "excerpt": "A test article",
-    "date": "2026-09-02",
-    "readTime": "1 min read",
-    "content": "<p>Test</p>",
-    "image": null,
-    "status": "approved",
-    "createdAt": "2026-09-02"
-  }
-]
+[]
