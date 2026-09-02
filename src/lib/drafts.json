@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "slug": "click-test-1788393512",
+    "title": "Click Approval Test",
+    "excerpt": "Testing the click-to-approve flow",
+    "date": "2026-09-02",
+    "readTime": "1 min read",
+    "content": "<p>Click test</p>",
+    "image": null,
+    "status": "pending",
+    "createdAt": "2026-09-02"
+  }
+]
