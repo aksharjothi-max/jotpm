@@ -18,13 +18,18 @@ async function getFileFromGitHub(filePath: string) {
       Accept: "application/vnd.github.v3+json",
     },
   });
-  if (!res.ok) throw new Error(`Failed to fetch ${filePath}`);
+  if (!res.ok) throw new Error(`Failed to fetch ${filePath}: ${res.status}`);
   const data = await res.json();
   const content = Buffer.from(data.content, "base64").toString();
   return { content: JSON.parse(content), sha: data.sha };
 }
 
 async function updateFileOnGitHub(filePath: string, content: any, sha: string, message: string) {
+  const body = {
+    message,
+    content: Buffer.from(JSON.stringify(content, null, 2)).toString("base64"),
+    sha,
+  };
   const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`, {
     method: "PUT",
     headers: {
@@ -32,13 +37,12 @@ async function updateFileOnGitHub(filePath: string, content: any, sha: string, m
       Accept: "application/vnd.github.v3+json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      message,
-      content: Buffer.from(JSON.stringify(content, null, 2)).toString("base64"),
-      sha,
-    }),
+    body: JSON.stringify(body),
   });
-  if (!res.ok) throw new Error(`Failed to update ${filePath}`);
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Failed to update ${filePath}: ${res.status} ${err}`);
+  }
   return res.json();
 }
 
@@ -57,27 +61,26 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    // Get drafts from GitHub
-    const { content: drafts, sha: draftsSha } = await getFileFromGitHub(DRAFTS_PATH);
-    const draft = drafts.find((d: any) => d.slug === slug);
+    // Get both files
+    const [{ content: drafts, sha: draftsSha }, { content: published, sha: publishedSha }] = await Promise.all([
+      getFileFromGitHub(DRAFTS_PATH),
+      getFileFromGitHub(PUBLISHED_PATH),
+    ]);
 
-    if (!draft) {
+    const draftIndex = drafts.findIndex((d: any) => d.slug === slug);
+    if (draftIndex < 0) {
       return NextResponse.json({ error: "Draft not found" }, { status: 404 });
     }
+
+    const draft = drafts[draftIndex];
 
     if (draft.status === "approved") {
       return NextResponse.json({ message: "Already approved", slug, title: draft.title });
     }
 
-    // Mark as approved in drafts
-    draft.status = "approved";
-    await updateFileOnGitHub(DRAFTS_PATH, drafts, draftsSha, `Approve: ${draft.title}`);
-
-    // Get published articles
-    const { content: published, sha: publishedSha } = await getFileFromGitHub(PUBLISHED_PATH);
-
-    // Add to published
-    published.push({
+    // Modify in memory
+    const updatedDrafts = drafts.filter((d: any) => d.slug !== slug);
+    const updatedPublished = [...published, {
       slug: draft.slug,
       title: draft.title,
       excerpt: draft.excerpt,
@@ -85,18 +88,15 @@ export async function GET(req: NextRequest) {
       readTime: draft.readTime,
       content: draft.content,
       image: draft.image || null,
-    });
-
-    // Remove from drafts
-    const updatedDrafts = drafts.filter((d: any) => d.slug !== slug);
+    }];
 
     // Update both files
-    await updateFileOnGitHub(DRAFTS_PATH, updatedDrafts, draftsSha, `Remove published draft: ${draft.title}`);
-    await updateFileOnGitHub(PUBLISHED_PATH, published, publishedSha, `Publish: ${draft.title}`);
+    await updateFileOnGitHub(DRAFTS_PATH, updatedDrafts, draftsSha, `Remove published: ${draft.title}`);
+    await updateFileOnGitHub(PUBLISHED_PATH, updatedPublished, publishedSha, `Publish: ${draft.title}`);
 
     return NextResponse.json({ message: "Approved", slug, title: draft.title });
-  } catch (err) {
-    console.error(err);
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+  } catch (err: any) {
+    console.error("Approval error:", err);
+    return NextResponse.json({ error: err.message || "Server error" }, { status: 500 });
   }
 }
