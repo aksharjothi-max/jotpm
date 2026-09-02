@@ -128,6 +128,7 @@ const articles: Article[] = [
       "The gap between a good idea and a live feature is where most PMs stall. A practical framework for getting from spec to shipped.",
     date: "2026-09-02",
     readTime: "7 min read",
+    image: "/images/blog/shipping-is-a-skill.png",
     content: `
 <p>There's a quiet crisis in product management: PMs who can write a brilliant spec but can't get a feature shipped. They research, they strategize, they produce beautiful documents — and then the feature dies in the gap between "approved" and "live."</p>
 
