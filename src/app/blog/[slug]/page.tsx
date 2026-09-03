@@ -20,13 +20,13 @@ export default async function ArticlePage({
     <article className="max-w-6xl mx-auto px-6 py-20">
       <Link
         href="/blog"
-        className="inline-flex items-center gap-2 text-sm text-[var(--muted)] hover:text-white transition-colors mb-12"
+        className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-[var(--primary)] transition-colors mb-12"
       >
         ← Back to Blog
       </Link>
 
       {article.image && (
-        <div className="mb-12 rounded-xl overflow-hidden border border-white/5">
+        <div className="mb-12 rounded-xl overflow-hidden border border-gray-200">
           <img
             src={article.image}
             alt={article.title}
@@ -37,16 +37,16 @@ export default async function ArticlePage({
 
       <header className="max-w-3xl mb-12">
         <div className="flex items-center gap-3 mb-4">
-          <span className="text-sm text-[var(--muted)]">{article.date}</span>
+          <span className="text-sm text-gray-500">{article.date}</span>
           <span className="text-sm text-[var(--accent)]">·</span>
-          <span className="text-sm text-[var(--muted)]">
+          <span className="text-sm text-gray-500">
             {article.readTime}
           </span>
         </div>
-        <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6">
+        <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6 text-[var(--primary)]">
           {article.title}
         </h1>
-        <p className="text-lg text-[var(--muted)] leading-relaxed">
+        <p className="text-lg text-gray-600 leading-relaxed">
           {article.excerpt}
         </p>
       </header>

@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --muted: #a1a1a1;
-  --card: #111111;
-  --card-hover: #1a1aa1a;
-  --border: rgba(255, 255, 255, 0.08);
-  --accent: #f59e0b;
-  --accent-soft: rgba(245, 158, 11, 0.1);
+  /* Professional Business Color Palette */
+  --background: #F8FAFC;
+  --foreground: #17202A;
+  --muted: #6B7280;
+  --card: #FFFFFF;
+  --border: #E5E7EB;
+  --accent: #E87532;
+  --accent-soft: rgba(232, 117, 50, 0.08);
+  --primary: #173B57;
+  --primary-soft: rgba(23, 59, 87, 0.06);
+  --secondary: #2F6F9F;
+  --secondary-soft: rgba(47, 111, 159, 0.08);
 }
 
 @theme inline {
@@ -16,10 +20,13 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-card: var(--card);
-  --color-card-hover: var(--card-hover);
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-primary: var(--primary);
+  --color-primary-soft: var(--primary-soft);
+  --color-secondary: var(--secondary);
+  --color-secondary-soft: var(--secondary-soft);
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -41,39 +48,30 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: #000;
+  color: #fff;
 }
 
-/* Subtle grid background */
+/* Subtle dot pattern background */
 .bg-grid {
-  background-image: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.03) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* Glow effect */
-.glow {
-  box-shadow: 0 0 80px rgba(245, 158, 11, 0.06);
-}
-
-/* Smooth card hover */
+/* Card hover effect */
 .card-hover {
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 .card-hover:hover {
-  border-color: rgba(245, 158, 11, 0.3);
-  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
 }
 
 /* Fade in animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -82,7 +80,7 @@ body {
 }
 
 .animate-fade-in {
-  animation: fadeInUp 0.6s ease forwards;
+  animation: fadeInUp 0.5s ease forwards;
 }
 
 .animate-delay-100 { animation-delay: 0.1s; }
@@ -101,20 +99,22 @@ body {
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
+  color: var(--primary);
 }
 .prose h3 {
   font-size: 1.25rem;
   font-weight: 600;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
+  color: var(--foreground);
 }
 .prose p {
-  color: #a1a1a1;
+  color: #4B5563;
   line-height: 1.8;
   margin-bottom: 1.25rem;
 }
 .prose ul, .prose ol {
-  color: #a1a1a1;
+  color: #4B5563;
   margin-bottom: 1.25rem;
   padding-left: 1.5rem;
 }
@@ -129,30 +129,33 @@ body {
   list-style-type: decimal;
 }
 .prose blockquote {
-  border-left: 3px solid var(--accent);
+  border-left: 4px solid var(--accent);
   padding-left: 1.25rem;
   margin: 1.5rem 0;
-  color: #d1d5db;
+  color: #374151;
   font-style: italic;
+  background: var(--accent-soft);
+  padding: 1rem 1.25rem;
+  border-radius: 0 8px 8px 0;
 }
 .prose strong {
-  color: #ededed;
+  color: var(--foreground);
   font-weight: 600;
 }
 .prose a {
-  color: var(--accent);
+  color: var(--secondary);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 .prose code {
-  background: rgba(255, 255, 255, 0.06);
+  background: #F3F4F6;
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   font-size: 0.875rem;
+  color: var(--primary);
 }
 .prose pre {
-  background: #111;
-  border: 1px solid var(--border);
+  background: #17202A;
   border-radius: 8px;
   padding: 1.25rem;
   overflow-x: auto;
@@ -161,4 +164,5 @@ body {
 .prose pre code {
   background: none;
   padding: 0;
+  color: #E5E7EB;
 }
