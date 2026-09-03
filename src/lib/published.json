@@ -36,38 +36,5 @@
     "image": null,
     "author": "Akshar Jothi",
     "category": "Product Management"
-  },
-  {
-    "slug": "final-flow-test",
-    "title": "Final Flow Test",
-    "excerpt": "Testing the complete approval flow",
-    "date": "2026-09-02",
-    "readTime": "1 min read",
-    "content": "<p>Final test</p>",
-    "image": null,
-    "author": "Akshar Jothi",
-    "category": "Product Management"
-  },
-  {
-    "slug": "click-test-1788393512",
-    "title": "Click Approval Test",
-    "excerpt": "Testing the click-to-approve flow",
-    "date": "2026-09-02",
-    "readTime": "1 min read",
-    "content": "<p>Click test</p>",
-    "image": null,
-    "author": "Akshar Jothi",
-    "category": "Product Management"
-  },
-  {
-    "slug": "click-test-1788393638",
-    "title": "Click Approval Test",
-    "excerpt": "Testing the click-to-approve flow",
-    "date": "2026-09-02",
-    "readTime": "1 min read",
-    "content": "<p>Click test</p>",
-    "image": null,
-    "author": "Akshar Jothi",
-    "category": "Product Management"
   }
 ]
