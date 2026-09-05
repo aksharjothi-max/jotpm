@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getArticles } from "@/lib/data";
+import { getArticles, formatDate } from "@/lib/data";
 
 export default function Home() {
   const articles = getArticles();
@@ -50,7 +50,7 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Latest Article - Image + Text Side by Side */}
+          {/* Latest Article - Full Width Hero */}
           <Link
             href={`/blog/${latest.slug}`}
             className="group block rounded-3xl overflow-hidden bg-white border border-[#D2D2D7] card-hover mb-8"
@@ -66,7 +66,7 @@ export default function Home() {
                 )}
               </div>
               <div className="p-8 md:p-12 flex flex-col justify-center">
-                <span className="text-xs text-[#86868B] mb-3">{latest.date} · {latest.readTime}</span>
+                <span className="text-xs text-[#86868B] mb-3">{formatDate(latest.date)} · {latest.readTime}</span>
                 <h3 className="text-2xl md:text-3xl font-semibold text-[#1D1D1F] mb-4 group-hover:text-[#0071E3] transition-colors">
                   {latest.title}
                 </h3>
@@ -80,8 +80,8 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* Other Articles - Side by Side */}
-          <div className="grid md:grid-cols-2 gap-8">
+          {/* Other Articles - 3 Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {rest.map((article) => (
               <Link
                 key={article.slug}
@@ -97,9 +97,9 @@ export default function Home() {
                     />
                   )}
                 </div>
-                <div className="p-6">
-                  <span className="text-xs text-[#86868B]">{article.date} · {article.readTime}</span>
-                  <h3 className="text-lg font-semibold text-[#1D1D1F] mt-2 mb-2 group-hover:text-[#0071E3] transition-colors">
+                <div className="p-5">
+                  <span className="text-xs text-[#86868B]">{formatDate(article.date)}</span>
+                  <h3 className="text-base font-semibold text-[#1D1D1F] mt-1 mb-2 group-hover:text-[#0071E3] transition-colors line-clamp-2">
                     {article.title}
                   </h3>
                   <p className="text-sm text-[#424245] leading-relaxed line-clamp-2">

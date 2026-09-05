@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getArticles } from "@/lib/data";
+import { getArticles, formatDate } from "@/lib/data";
 
 export default function BlogPage() {
   const articles = getArticles();
@@ -33,7 +33,7 @@ export default function BlogPage() {
                 )}
                 <div className="p-6 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-xs text-[#86868B]">{article.date}</span>
+                    <span className="text-xs text-[#86868B]">{formatDate(article.date)}</span>
                     <span className="text-xs text-[#D2D2D7]">·</span>
                     <span className="text-xs text-[#86868B]">{article.readTime}</span>
                   </div>

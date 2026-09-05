@@ -1,4 +1,4 @@
-import { getArticles, getArticleBySlug } from "@/lib/data";
+import { getArticles, getArticleBySlug, formatDate } from "@/lib/data";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -38,7 +38,7 @@ export default async function ArticlePage({
 
         <header className="max-w-3xl mb-12">
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-sm text-[#86868B]">{article.date}</span>
+            <span className="text-sm text-[#86868B]">{formatDate(article.date)}</span>
             <span className="text-sm text-[#D2D2D7]">·</span>
             <span className="text-sm text-[#86868B]">{article.readTime}</span>
           </div>
