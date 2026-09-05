@@ -1,41 +1,16 @@
-"use client";
-
 import Link from "next/link";
-import { useState, useEffect } from "react";
-
-const articles = [
-  {
-    slug: "growth-loops-not-funnels",
-    title: "Growth Loops, Not Funnels",
-    excerpt: "Why the most resilient growth strategies abandon the linear pipeline in favor of self-reinforcing systems.",
-    image: "/images/blog/growth-loops-not-funnels.png",
-  },
-  {
-    slug: "north-star-metric",
-    title: "Finding Your North Star",
-    excerpt: "Most teams drown in dashboards. The best ones align around a single measure of customer value.",
-    image: "/images/blog/north-star-metric.png",
-  },
-  {
-    slug: "shipping-is-a-skill",
-    title: "Shipping Is a Skill",
-    excerpt: "The gap between a good idea and a live feature is where most PMs stall.",
-    image: "/images/blog/shipping-is-a-skill.png",
-  },
-];
+import { getArticles } from "@/lib/data";
 
 export default function Home() {
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
+  const articles = getArticles();
+  const latest = articles[0];
+  const rest = articles.slice(1);
 
   return (
     <>
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center bg-black overflow-hidden">
-        <div className={`text-center px-6 transition-all duration-1000 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div className="text-center px-6">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold text-white mb-4 tracking-tight">
             Jot<span className="text-[#0071E3]">PM</span>
           </h1>
@@ -60,55 +35,71 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#FBFBFD]" />
       </section>
 
-      {/* Featured Article */}
+      {/* Featured Latest Article */}
       <section className="bg-[#FBFBFD] py-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-semibold text-[#1D1D1F] mb-12 tracking-tight">
-            Featured Writing
+            Latest Writing
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <Link
-              href={`/blog/${articles[0].slug}`}
-              className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 card-hover"
-            >
-              <img
-                src={articles[0].image}
-                alt={articles[0].title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 className="text-2xl font-semibold text-white mb-2">
-                  {articles[0].title}
-                </h3>
-                <p className="text-sm text-white/80">{articles[0].excerpt}</p>
+
+          {/* Latest Article - Large Hero Style */}
+          <Link
+            href={`/blog/${latest.slug}`}
+            className="group block rounded-3xl overflow-hidden bg-white border border-[#D2D2D7] card-hover mb-8"
+          >
+            <div className="grid md:grid-cols-2 gap-0">
+              <div className="relative aspect-[4/3] md:aspect-auto overflow-hidden bg-gray-100">
+                {latest.image && (
+                  <img
+                    src={latest.image}
+                    alt={latest.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                )}
               </div>
-            </Link>
-            <div className="flex flex-col gap-8">
-              {articles.slice(1).map((article) => (
-                <Link
-                  key={article.slug}
-                  href={`/blog/${article.slug}`}
-                  className="group flex gap-6 items-start p-4 rounded-2xl hover:bg-white transition-all"
-                >
-                  <div className="relative w-32 h-32 rounded-xl overflow-hidden flex-shrink-0 bg-gray-100">
+              <div className="p-8 md:p-12 flex flex-col justify-center">
+                <span className="text-xs text-[#86868B] mb-3">{latest.date} · {latest.readTime}</span>
+                <h3 className="text-2xl md:text-3xl font-semibold text-[#1D1D1F] mb-4 group-hover:text-[#0071E3] transition-colors">
+                  {latest.title}
+                </h3>
+                <p className="text-[#424245] leading-relaxed mb-6">
+                  {latest.excerpt}
+                </p>
+                <span className="text-sm text-[#0071E3] font-medium">
+                  Read more →
+                </span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Other Articles - Side by Side */}
+          <div className="grid md:grid-cols-2 gap-8">
+            {rest.map((article) => (
+              <Link
+                key={article.slug}
+                href={`/blog/${article.slug}`}
+                className="group rounded-2xl overflow-hidden bg-white border border-[#D2D2D7] card-hover"
+              >
+                <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
+                  {article.image && (
                     <img
                       src={article.image}
                       alt={article.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-[#1D1D1F] mb-2 group-hover:text-[#0071E3] transition-colors">
-                      {article.title}
-                    </h3>
-                    <p className="text-sm text-[#86868B] leading-relaxed">
-                      {article.excerpt}
-                    </p>
-                  </div>
-                </Link>
-              ))}
-            </div>
+                  )}
+                </div>
+                <div className="p-6">
+                  <span className="text-xs text-[#86868B]">{article.date} · {article.readTime}</span>
+                  <h3 className="text-lg font-semibold text-[#1D1D1F] mt-2 mb-2 group-hover:text-[#0071E3] transition-colors">
+                    {article.title}
+                  </h3>
+                  <p className="text-sm text-[#424245] leading-relaxed line-clamp-2">
+                    {article.excerpt}
+                  </p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
