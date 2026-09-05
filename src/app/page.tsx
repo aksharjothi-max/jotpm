@@ -42,7 +42,7 @@ export default function Home() {
             Latest Writing
           </h2>
 
-          {/* Latest Article - Large Hero Style */}
+          {/* Latest Article - Image + Text Side by Side */}
           <Link
             href={`/blog/${latest.slug}`}
             className="group block rounded-3xl overflow-hidden bg-white border border-[#D2D2D7] card-hover mb-8"
