@@ -25,10 +25,10 @@ export default function Home() {
               Read the Blog
             </Link>
             <Link
-              href="/#about"
+              href="/about"
               className="px-6 py-3 rounded-full border border-white/20 text-white font-medium text-sm hover:bg-white/10 transition-all"
             >
-              Learn More
+              About Me
             </Link>
           </div>
         </div>
@@ -38,9 +38,17 @@ export default function Home() {
       {/* Featured Latest Article */}
       <section className="bg-[#FBFBFD] py-24">
         <div className="max-w-[1200px] mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#1D1D1F] mb-12 tracking-tight">
-            Latest Writing
-          </h2>
+          <div className="flex items-end justify-between mb-12">
+            <h2 className="text-3xl md:text-4xl font-semibold text-[#1D1D1F] tracking-tight">
+              Latest Writing
+            </h2>
+            <Link
+              href="/blog"
+              className="text-sm text-[#0071E3] font-medium hover:underline"
+            >
+              View all →
+            </Link>
+          </div>
 
           {/* Latest Article - Image + Text Side by Side */}
           <Link
@@ -104,38 +112,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="bg-black py-24">
+      {/* Contact Section */}
+      <section id="contact" className="bg-black py-24">
         <div className="max-w-[980px] mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-semibold text-white mb-8 tracking-tight">
-            About Me
-          </h2>
-          <p className="text-lg md:text-xl text-[#86868B] leading-relaxed max-w-3xl mx-auto mb-12 font-light">
-            I've spent my career at the intersection of product management and growth strategy — the place where user needs, business goals, and technical reality collide. That vantage point changes how you see problems.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { num: "01", title: "Product Strategy" },
-              { num: "02", title: "Growth Loops" },
-              { num: "03", title: "User Research" },
-              { num: "04", title: "Execution" },
-            ].map((item) => (
-              <div
-                key={item.num}
-                className="p-6 rounded-2xl bg-white/5 border border-white/10"
-              >
-                <span className="text-xs font-medium text-[#0071E3]">{item.num}</span>
-                <h3 className="font-semibold text-white mt-2">{item.title}</h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="bg-[#FBFBFD] py-24">
-        <div className="max-w-[980px] mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#1D1D1F] mb-8 tracking-tight">
             Let&apos;s Connect
           </h2>
           <p className="text-lg text-[#86868B] max-w-lg mx-auto mb-12">

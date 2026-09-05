@@ -5,49 +5,49 @@ export default function BlogPage() {
   const articles = getArticles();
 
   return (
-    <section className="max-w-6xl mx-auto px-6 py-20">
-      <div className="max-w-2xl mb-16">
-        <p className="text-sm font-medium text-[var(--accent)] mb-4">Blog</p>
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-[var(--primary)]">
-          Writing on product & growth
+    <section className="min-h-screen bg-[#FBFBFD] py-24">
+      <div className="max-w-[980px] mx-auto px-6">
+        <h1 className="text-4xl md:text-5xl font-semibold text-[#1D1D1F] mb-4 tracking-tight">
+          Blog
         </h1>
-        <p className="text-gray-600 leading-relaxed">
-          Practical frameworks, honest lessons, and the occasional hot take —
-          from a PM who's been in the trenches.
+        <p className="text-lg text-[#86868B] mb-16">
+          Practical frameworks, honest lessons, and the occasional hot take — from a PM who's been in the trenches.
         </p>
-      </div>
 
-      <div className="space-y-4">
-        {articles.map((article) => (
-          <Link
-            key={article.slug}
-            href={`/blog/${article.slug}`}
-            className="group block p-6 md:p-8 rounded-xl border border-gray-200 bg-white card-hover"
-          >
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-xs text-gray-500">
-                    {article.date}
-                  </span>
-                  <span className="text-xs text-[var(--accent)]">·</span>
-                  <span className="text-xs text-gray-500">
-                    {article.readTime}
-                  </span>
+        <div className="space-y-6">
+          {articles.map((article) => (
+            <Link
+              key={article.slug}
+              href={`/blog/${article.slug}`}
+              className="group block rounded-2xl overflow-hidden bg-white border border-[#D2D2D7] card-hover"
+            >
+              <div className="flex flex-col md:flex-row gap-0">
+                {article.image && (
+                  <div className="relative w-full md:w-48 h-48 md:h-auto flex-shrink-0 overflow-hidden bg-gray-100">
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                )}
+                <div className="p-6 flex flex-col justify-center">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-xs text-[#86868B]">{article.date}</span>
+                    <span className="text-xs text-[#D2D2D7]">·</span>
+                    <span className="text-xs text-[#86868B]">{article.readTime}</span>
+                  </div>
+                  <h2 className="text-xl font-semibold text-[#1D1D1F] group-hover:text-[#0071E3] transition-colors mb-2">
+                    {article.title}
+                  </h2>
+                  <p className="text-[#424245] leading-relaxed line-clamp-2">
+                    {article.excerpt}
+                  </p>
                 </div>
-                <h2 className="text-xl md:text-2xl font-semibold group-hover:text-[var(--accent)] transition-colors mb-2 text-[var(--primary)]">
-                  {article.title}
-                </h2>
-                <p className="text-gray-500 leading-relaxed">
-                  {article.excerpt}
-                </p>
               </div>
-              <span className="text-[var(--accent)] text-sm font-medium whitespace-nowrap">
-                Read →
-              </span>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );
