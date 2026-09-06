@@ -3,81 +3,51 @@ import { getArticles } from "@/lib/data";
 
 export default function BlogPage() {
   const articles = getArticles();
-  const latest = articles[0];
-  const rest = articles.slice(1);
 
   return (
-    <section className="min-h-screen bg-[#F8FAFC] py-20">
-      <div className="max-w-[1100px] mx-auto px-6">
-        <div className="mb-14">
-          <p className="text-sm font-medium text-[#E87532] mb-1 uppercase tracking-wide">Blog</p>
-          <h1 className="text-3xl md:text-4xl font-semibold text-[#17202A] tracking-tight mb-3">
-            Writing on Product & Growth
-          </h1>
-          <p className="text-lg text-[#4A5568] max-w-2xl">
-            Practical frameworks, honest lessons, and the occasional hot take — from a PM who's been in the trenches.
-          </p>
-        </div>
+    <section className="max-w-6xl mx-auto px-6 py-20">
+      <div className="max-w-2xl mb-16">
+        <p className="text-sm font-medium text-[var(--accent)] mb-4">Blog</p>
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-[var(--primary)]">
+          Writing on product & growth
+        </h1>
+        <p className="text-gray-600 leading-relaxed">
+          Practical frameworks, honest lessons, and the occasional hot take —
+          from a PM who's been in the trenches.
+        </p>
+      </div>
 
-        {/* Featured Article - Magazine Style */}
-        <Link
-          href={`/blog/${latest.slug}`}
-          className="group block rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-300 featured-card mb-10"
-        >
-          <div className="grid md:grid-cols-2 gap-0">
-            <div className="relative h-72 md:h-full min-h-[300px] overflow-hidden bg-gray-100">
-              {latest.image && (
-                <img
-                  src={latest.image}
-                  alt={latest.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              )}
-            </div>
-            <div className="p-8 md:p-12 flex flex-col justify-center">
-              <span className="text-xs text-[#8492A6] mb-3 uppercase tracking-wide font-medium">
-                {latest.date} · {latest.readTime}
-              </span>
-              <h3 className="text-2xl md:text-3xl font-semibold text-[#17202A] mb-3 group-hover:text-[#E87532] transition-colors leading-tight">
-                {latest.title}
-              </h3>
-              <p className="text-[#4A5568] leading-relaxed mb-5">
-                {latest.excerpt}
-              </p>
-              <span className="text-sm text-[#E87532] font-medium">Read more →</span>
-            </div>
-          </div>
-        </Link>
-
-        {/* Other Articles Grid - 2 Column */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {rest.map((article) => (
-            <Link
-              key={article.slug}
-              href={`/blog/${article.slug}`}
-              className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-300 article-card"
-            >
-              <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
-                {article.image && (
-                  <img
-                    src={article.image}
-                    alt={article.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                )}
-              </div>
-              <div className="p-6">
-                <span className="text-xs text-[#8492A6] uppercase tracking-wide font-medium">{article.date}</span>
-                <h3 className="text-lg font-semibold text-[#17202A] mt-2 mb-2 group-hover:text-[#E87532] transition-colors line-clamp-2 leading-snug">
+      <div className="space-y-4">
+        {articles.map((article) => (
+          <Link
+            key={article.slug}
+            href={`/blog/${article.slug}`}
+            className="group block p-6 md:p-8 rounded-xl border border-gray-200 bg-white card-hover"
+          >
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-xs text-gray-500">
+                    {article.date}
+                  </span>
+                  <span className="text-xs text-[var(--accent)]">·</span>
+                  <span className="text-xs text-gray-500">
+                    {article.readTime}
+                  </span>
+                </div>
+                <h2 className="text-xl md:text-2xl font-semibold group-hover:text-[var(--accent)] transition-colors mb-2 text-[var(--primary)]">
                   {article.title}
-                </h3>
-                <p className="text-sm text-[#4A5568] leading-relaxed line-clamp-2">
+                </h2>
+                <p className="text-gray-500 leading-relaxed">
                   {article.excerpt}
                 </p>
               </div>
-            </Link>
-          ))}
-        </div>
+              <span className="text-[var(--accent)] text-sm font-medium whitespace-nowrap">
+                Read →
+              </span>
+            </div>
+          </Link>
+        ))}
       </div>
     </section>
   );
