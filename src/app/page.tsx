@@ -8,106 +8,143 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero - Apple-style dark section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
-        <div className="text-center px-6 max-w-5xl mx-auto">
-          <h1 className="text-7xl md:text-9xl font-semibold text-white mb-6 tracking-tight">
-            Jot<span className="text-[#E87532]">PM</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-            Product management insights, growth strategy frameworks, and lessons from the trenches.
-          </p>
-          <div className="flex items-center justify-center gap-6">
+      {/* Hero */}
+      <section className="bg-[#F8FAFC] py-20">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="max-w-3xl">
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6 text-gray-900">
+              Turning complexity into{" "}
+              <span className="text-blue-600">actionable clarity</span>
+            </h1>
+            <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-10 max-w-2xl">
+              I'm Akshar Jothi — a product manager specializing in growth
+              strategy. I write about the frameworks, decisions, and hard-won
+              lessons behind building products that grow.
+            </p>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/blog"
+                className="px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 transition-colors"
+              >
+                Read the Blog
+              </Link>
+              <Link
+                href="/#about"
+                className="px-6 py-3 rounded-lg border border-gray-300 text-sm font-medium text-gray-700 hover:border-gray-400 hover:bg-white transition-all"
+              >
+                About Me
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="max-w-6xl mx-auto px-6 py-24">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <p className="text-sm font-medium text-blue-600 mb-4">About</p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-gray-900">
+              The intersection of product, growth, and execution
+            </h2>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              I've spent my career at the intersection of product management and
+              growth strategy — the place where user needs, business goals, and
+              technical reality collide. That vantage point changes how you see
+              problems.
+            </p>
+            <p className="text-gray-600 leading-relaxed mb-6">
+              What looks like a growth plateau is often a product-market fit
+              problem. What looks like a feature gap is often a positioning
+              problem. The work is finding the root cause — and shipping the fix.
+            </p>
             <Link
               href="/blog"
-              className="px-8 py-4 rounded-full bg-white text-black font-medium text-base hover:bg-gray-100 transition-all"
+              className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
             >
-              Read the Blog
+              Read my writing →
             </Link>
-            <Link
-              href="/about"
-              className="px-8 py-4 rounded-full border border-white/30 text-white font-medium text-base hover:bg-white/10 transition-all"
-            >
-              About Me
-            </Link>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { num: "01", title: "Product Strategy", desc: "From vision to roadmap" },
+              { num: "02", title: "Growth Loops", desc: "Compound, don't leak" },
+              { num: "03", title: "User Research", desc: "Evidence over opinion" },
+              { num: "04", title: "Execution", desc: "Ship, measure, learn" },
+            ].map((item) => (
+              <div
+                key={item.num}
+                className="p-6 rounded-xl border border-gray-200 bg-white card-hover"
+              >
+                <span className="text-xs font-medium text-blue-600">
+                  {item.num}
+                </span>
+                <h3 className="font-semibold mt-2 mb-1 text-gray-900">{item.title}</h3>
+                <p className="text-xs text-gray-500">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Article - Full-width hero card */}
-      <section className="bg-[#F8FAFC] py-24">
-        <div className="max-w-[1100px] mx-auto px-6">
+      {/* Latest Articles */}
+      <section className="border-t border-gray-200">
+        <div className="max-w-6xl mx-auto px-6 py-24">
           <div className="flex items-end justify-between mb-12">
-            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight">Latest Writing</h2>
-            <Link href="/blog" className="text-sm text-[#E87532] font-medium hover:underline">View all →</Link>
-          </div>
-
-          <Link href={`/blog/${latest.slug}`} className="group block rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300">
-            <div className="grid md:grid-cols-2 gap-0">
-              <div className="relative h-72 md:h-full overflow-hidden bg-gray-100">
-                {latest.image && (
-                  <img
-                    src={latest.image}
-                    alt={latest.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                )}
-              </div>
-              <div className="p-10 md:p-14 flex flex-col justify-center">
-                <span className="text-xs text-gray-500 mb-3 uppercase tracking-wide">{latest.date} · {latest.readTime}</span>
-                <h3 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 group-hover:text-[#E87532] transition-colors leading-tight">
-                  {latest.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-6 text-lg">{latest.excerpt}</p>
-                <span className="text-sm text-[#E87532] font-medium">Read more →</span>
-              </div>
+            <div>
+              <p className="text-sm font-medium text-blue-600 mb-4">Blog</p>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
+                Latest Writing
+              </h2>
             </div>
-          </Link>
-        </div>
-      </section>
-
-      {/* Other Articles - Apple-style grid */}
-      <section className="bg-[#F8FAFC] pb-24">
-        <div className="max-w-[1100px] mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {rest.map((article) => (
+            <Link
+              href="/blog"
+              className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors hidden md:block"
+            >
+              View all →
+            </Link>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {articles.map((article) => (
               <Link
                 key={article.slug}
                 href={`/blog/${article.slug}`}
-                className="group rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300"
+                className="group p-6 rounded-xl border border-gray-200 bg-white card-hover"
               >
-                <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
-                  {article.image && (
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  )}
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-xs text-gray-500">
+                    {article.date}
+                  </span>
+                  <span className="text-xs text-blue-600">·</span>
+                  <span className="text-xs text-gray-500">
+                    {article.readTime}
+                  </span>
                 </div>
-                <div className="p-6">
-                  <span className="text-xs text-gray-500 uppercase tracking-wide">{article.date}</span>
-                  <h3 className="text-lg font-semibold text-gray-900 mt-2 mb-2 group-hover:text-[#E87532] transition-colors line-clamp-2 leading-snug">
-                    {article.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">{article.excerpt}</p>
-                </div>
+                <h3 className="text-lg font-semibold mb-3 group-hover:text-blue-600 transition-colors leading-snug text-gray-900">
+                  {article.title}
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {article.excerpt}
+                </p>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact - Apple-style dark section */}
-      <section className="bg-black py-32">
-        <div className="max-w-[900px] mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight">Let&apos;s Connect</h2>
-          <p className="text-lg text-gray-400 max-w-lg mx-auto mb-12 leading-relaxed">
-            Have a growth challenge, want to collaborate, or just want to talk product? I&apos;d love to hear from you.
+      {/* Contact */}
+      <section id="contact" className="border-t border-gray-200">
+        <div className="max-w-6xl mx-auto px-6 py-24 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-gray-900">
+            Let's connect
+          </h2>
+          <p className="text-gray-600 max-w-lg mx-auto mb-8">
+            Have a growth challenge, want to collaborate, or just want to talk
+            product? I'd love to hear from you.
           </p>
           <a
             href="mailto:aksharjothi@gmail.com"
-            className="inline-block px-10 py-4 rounded-full bg-white text-black font-medium text-base hover:bg-gray-100 transition-all"
+            className="inline-block px-8 py-3 rounded-lg bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 transition-colors"
           >
             Get in Touch
           </a>
