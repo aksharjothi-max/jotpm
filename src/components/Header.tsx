@@ -2,46 +2,33 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 50,
-        backdropFilter: "blur(20px)",
-        background: "rgba(255, 255, 255, 0.85)",
-        borderBottom: "1px solid #E5E7EB",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1100px",
-          margin: "0 auto",
-          padding: "0 24px",
-          height: "50px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <Link href="/" style={{ fontSize: "16px", fontWeight: 600, letterSpacing: "-0.02em", color: "#1D1D1F", textDecoration: "none" }}>
-          Jot<span style={{ color: "#E87532" }}>PM</span>
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#FBFBFD]/80 border-b border-[#D2D2D7]">
+      <div className="max-w-[980px] mx-auto px-6 h-12 flex items-center justify-between">
+        <Link href="/" className="text-sm font-semibold tracking-tight text-[#1D1D1F]">
+          Jot<span className="text-[#0071E3]">PM</span>
         </Link>
-        <nav style={{ display: "flex", gap: "36px", alignItems: "center" }}>
-          <Link href="/" style={{ fontSize: "13px", color: "#424245", textDecoration: "none", transition: "color 0.2s" }}>Home</Link>
-          <Link href="/blog" style={{ fontSize: "13px", color: "#424245", textDecoration: "none", transition: "color 0.2s" }}>Blog</Link>
-          <Link href="/about" style={{ fontSize: "13px", color: "#424245", textDecoration: "none", transition: "color 0.2s" }}>About</Link>
+        <nav className="flex items-center gap-8">
+          <Link
+            href="/"
+            className="text-xs text-[#424245] hover:text-[#1D1D1F] transition-colors"
+          >
+            Home
+          </Link>
+          <Link
+            href="/blog"
+            className="text-xs text-[#424245] hover:text-[#1D1D1F] transition-colors"
+          >
+            Blog
+          </Link>
+          <Link
+            href="/about"
+            className="text-xs text-[#424245] hover:text-[#1D1D1F] transition-colors"
+          >
+            About
+          </Link>
           <Link
             href="/#contact"
-            style={{
-              fontSize: "13px",
-              fontWeight: 500,
-              padding: "5px 16px",
-              borderRadius: "9999px",
-              background: "#E87532",
-              color: "#fff",
-              textDecoration: "none",
-              transition: "all 0.2s",
-            }}
+            className="text-xs font-medium px-3 py-1 rounded-full bg-[#0071E3] text-white hover:bg-blue-600 transition-all"
           >
             Contact
           </Link>
