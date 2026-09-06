@@ -8,143 +8,122 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-[#F8FAFC] py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6 text-gray-900">
-              Turning complexity into{" "}
-              <span className="text-blue-600">actionable clarity</span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-10 max-w-2xl">
-              I'm Akshar Jothi — a product manager specializing in growth
-              strategy. I write about the frameworks, decisions, and hard-won
-              lessons behind building products that grow.
-            </p>
-            <div className="flex items-center gap-4">
-              <Link
-                href="/blog"
-                className="px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 transition-colors"
-              >
-                Read the Blog
-              </Link>
-              <Link
-                href="/#about"
-                className="px-6 py-3 rounded-lg border border-gray-300 text-sm font-medium text-gray-700 hover:border-gray-400 hover:bg-white transition-all"
-              >
-                About Me
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About */}
-      <section id="about" className="max-w-6xl mx-auto px-6 py-24">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <p className="text-sm font-medium text-blue-600 mb-4">About</p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-gray-900">
-              The intersection of product, growth, and execution
-            </h2>
-            <p className="text-gray-600 leading-relaxed mb-4">
-              I've spent my career at the intersection of product management and
-              growth strategy — the place where user needs, business goals, and
-              technical reality collide. That vantage point changes how you see
-              problems.
-            </p>
-            <p className="text-gray-600 leading-relaxed mb-6">
-              What looks like a growth plateau is often a product-market fit
-              problem. What looks like a feature gap is often a positioning
-              problem. The work is finding the root cause — and shipping the fix.
-            </p>
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] flex items-center justify-center bg-black overflow-hidden">
+        <div className="text-center px-6">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-semibold text-white mb-4 tracking-tight">
+            Jot<span className="text-blue-400">PM</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-2xl mx-auto font-light">
+            Product management insights, growth strategy frameworks, and lessons from the trenches.
+          </p>
+          <div className="flex items-center justify-center gap-4">
             <Link
               href="/blog"
-              className="text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
+              className="px-6 py-3 rounded-full bg-blue-600 text-white font-medium text-sm hover:bg-blue-700 transition-all"
             >
-              Read my writing →
+              Read the Blog
+            </Link>
+            <Link
+              href="/about"
+              className="px-6 py-3 rounded-full border border-white/20 text-white font-medium text-sm hover:bg-white/10 transition-all"
+            >
+              About Me
             </Link>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { num: "01", title: "Product Strategy", desc: "From vision to roadmap" },
-              { num: "02", title: "Growth Loops", desc: "Compound, don't leak" },
-              { num: "03", title: "User Research", desc: "Evidence over opinion" },
-              { num: "04", title: "Execution", desc: "Ship, measure, learn" },
-            ].map((item) => (
-              <div
-                key={item.num}
-                className="p-6 rounded-xl border border-gray-200 bg-white card-hover"
-              >
-                <span className="text-xs font-medium text-blue-600">
-                  {item.num}
-                </span>
-                <h3 className="font-semibold mt-2 mb-1 text-gray-900">{item.title}</h3>
-                <p className="text-xs text-gray-500">{item.desc}</p>
-              </div>
-            ))}
-          </div>
         </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white" />
       </section>
 
-      {/* Latest Articles */}
-      <section className="border-t border-gray-200">
-        <div className="max-w-6xl mx-auto px-6 py-24">
+      {/* Featured Latest Article */}
+      <section className="bg-white py-24">
+        <div className="max-w-[1200px] mx-auto px-6">
           <div className="flex items-end justify-between mb-12">
-            <div>
-              <p className="text-sm font-medium text-blue-600 mb-4">Blog</p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
-                Latest Writing
-              </h2>
-            </div>
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight">
+              Latest Writing
+            </h2>
             <Link
               href="/blog"
-              className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors hidden md:block"
+              className="text-sm text-blue-600 font-medium hover:underline"
             >
               View all →
             </Link>
           </div>
+
+          {/* Latest Article - Image + Text Side by Side */}
+          <Link
+            href={`/blog/${latest.slug}`}
+            className="group block rounded-3xl overflow-hidden bg-white border border-gray-200 card-hover mb-8"
+          >
+            <div className="grid md:grid-cols-2 gap-0">
+              <div className="relative aspect-[4/3] md:aspect-auto overflow-hidden bg-gray-100">
+                {latest.image && (
+                  <img
+                    src={latest.image}
+                    alt={latest.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                )}
+              </div>
+              <div className="p-8 md:p-12 flex flex-col justify-center">
+                <span className="text-xs text-gray-500 mb-3">{latest.date} · {latest.readTime}</span>
+                <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                  {latest.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed mb-6">
+                  {latest.excerpt}
+                </p>
+                <span className="text-sm text-blue-600 font-medium">
+                  Read more →
+                </span>
+              </div>
+            </div>
+          </Link>
+
+          {/* Other Articles - 3 Column Grid */}
           <div className="grid md:grid-cols-3 gap-6">
-            {articles.map((article) => (
+            {rest.map((article) => (
               <Link
                 key={article.slug}
                 href={`/blog/${article.slug}`}
-                className="group p-6 rounded-xl border border-gray-200 bg-white card-hover"
+                className="group rounded-2xl overflow-hidden bg-white border border-gray-200 card-hover"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-xs text-gray-500">
-                    {article.date}
-                  </span>
-                  <span className="text-xs text-blue-600">·</span>
-                  <span className="text-xs text-gray-500">
-                    {article.readTime}
-                  </span>
+                <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
+                  {article.image && (
+                    <img
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  )}
                 </div>
-                <h3 className="text-lg font-semibold mb-3 group-hover:text-blue-600 transition-colors leading-snug text-gray-900">
-                  {article.title}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {article.excerpt}
-                </p>
+                <div className="p-5">
+                  <span className="text-xs text-gray-500">{article.date}</span>
+                  <h3 className="text-base font-semibold text-gray-900 mt-1 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                    {article.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
+                    {article.excerpt}
+                  </p>
+                </div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="border-t border-gray-200">
-        <div className="max-w-6xl mx-auto px-6 py-24 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-gray-900">
-            Let's connect
+      {/* Contact Section */}
+      <section id="contact" className="bg-black py-24">
+        <div className="max-w-[980px] mx-auto px-6 text-center">
+          <h2 className="text-4xl md:text-5xl font-semibold text-white mb-8 tracking-tight">
+            Let&apos;s Connect
           </h2>
-          <p className="text-gray-600 max-w-lg mx-auto mb-8">
-            Have a growth challenge, want to collaborate, or just want to talk
-            product? I'd love to hear from you.
+          <p className="text-lg text-gray-400 max-w-lg mx-auto mb-12">
+            Have a growth challenge, want to collaborate, or just want to talk product? I&apos;d love to hear from you.
           </p>
           <a
             href="mailto:aksharjothi@gmail.com"
-            className="inline-block px-8 py-3 rounded-lg bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 transition-colors"
+            className="inline-block px-8 py-4 rounded-full bg-blue-600 text-white font-medium text-base hover:bg-blue-700 transition-all"
           >
             Get in Touch
           </a>

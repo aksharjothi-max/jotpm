@@ -5,28 +5,42 @@ import GiscusComments from "@/components/GiscusComments";
 import ArticleJsonLd from "@/components/ArticleJsonLd";
 
 export async function generateStaticParams() {
-  return getArticles().map((article) => ({ slug: article.slug }));
+  const articles = getArticles();
+  return articles.map((article) => ({ slug: article.slug }));
 }
 
-export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ArticlePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const article = getArticleBySlug(slug);
   if (!article) notFound();
 
   const articles = getArticles();
-  const idx = articles.findIndex((a) => a.slug === slug);
-  const related = articles.filter((_, i) => i !== idx).slice(0, 3);
+  const currentIndex = articles.findIndex((a) => a.slug === slug);
+  const related = articles.filter((_, i) => i !== currentIndex).slice(0, 3);
 
   return (
     <>
       <ArticleJsonLd slug={slug} />
-      <article className="min-h-screen bg-[#F8FAFC] py-12">
+      <article className="min-h-screen bg-white py-12">
         <div className="max-w-[980px] mx-auto px-6">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-[#E87532] transition-colors mb-8">← Back to Blog</Link>
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors mb-8"
+          >
+            ← Back to Blog
+          </Link>
 
           {article.image && (
             <div className="mb-8 rounded-2xl overflow-hidden border border-gray-200">
-              <img src={article.image} alt={article.title} className="w-full h-auto" />
+              <img
+                src={article.image}
+                alt={article.title}
+                className="w-full h-auto"
+              />
             </div>
           )}
 
@@ -36,26 +50,48 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               <span className="text-sm text-gray-300">·</span>
               <span className="text-sm text-gray-500">{article.readTime}</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6 text-[#173B57]">{article.title}</h1>
-            <p className="text-lg text-gray-600 leading-relaxed">{article.excerpt}</p>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6 text-gray-900">
+              {article.title}
+            </h1>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              {article.excerpt}
+            </p>
           </header>
 
-          <div className="prose" dangerouslySetInnerHTML={{ __html: article.content }} />
+          <div
+            className="prose"
+            dangerouslySetInnerHTML={{ __html: article.content }}
+          />
 
+          {/* Related Articles */}
           {related.length > 0 && (
             <div className="mt-16 pt-8 border-t border-gray-200">
-              <h2 className="text-xl font-semibold text-[#173B57] mb-6">Continue Reading</h2>
+              <h2 className="text-xl font-semibold text-gray-900 mb-6">
+                Continue Reading
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {related.map((r) => (
-                  <Link key={r.slug} href={`/blog/${r.slug}`} className="group rounded-xl overflow-hidden bg-white border border-gray-200 card-hover">
+                  <Link
+                    key={r.slug}
+                    href={`/blog/${r.slug}`}
+                    className="group rounded-xl overflow-hidden bg-white border border-gray-200 card-hover"
+                  >
                     {r.image && (
                       <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
-                        <img src={r.image} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <img
+                          src={r.image}
+                          alt={r.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
                       </div>
                     )}
                     <div className="p-4">
-                      <h3 className="text-sm font-semibold text-[#173B57] group-hover:text-[#E87532] transition-colors line-clamp-2">{r.title}</h3>
-                      <span className="text-xs text-gray-500 mt-1 block">{r.date}</span>
+                      <h3 className="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
+                        {r.title}
+                      </h3>
+                      <span className="text-xs text-gray-500 mt-1 block">
+                        {r.date}
+                      </span>
                     </div>
                   </Link>
                 ))}
@@ -63,8 +99,11 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             </div>
           )}
 
+          {/* Comments */}
           <div className="mt-16 pt-8 border-t border-gray-200">
-            <h2 className="text-xl font-semibold text-[#173B57] mb-6">Comments</h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-6">
+              Comments
+            </h2>
             <GiscusComments />
           </div>
         </div>
