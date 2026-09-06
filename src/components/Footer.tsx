@@ -2,18 +2,33 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-white">
-      <div className="max-w-[1000px] mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-6">
-          <Link href="/" className="text-base font-semibold tracking-tight text-gray-900">
-            Jot<span className="text-[#E87532]">PM</span>
+    <footer
+      style={{
+        borderTop: "1px solid #E5E7EB",
+        background: "#fff",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          padding: "0 24px",
+          height: "80px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <div style={{ display: "flex", gap: "36px", alignItems: "center" }}>
+          <Link href="/" style={{ fontSize: "14px", fontWeight: 600, color: "#1D1D1F", textDecoration: "none" }}>
+            Jot<span style={{ color: "#E87532" }}>PM</span>
           </Link>
-          <span className="text-sm text-gray-500">&copy; {new Date().getFullYear()} Akshar Jothi</span>
+          <span style={{ fontSize: "12px", color: "#86868B" }}>&copy; {new Date().getFullYear()} Akshar Jothi</span>
         </div>
-        <div className="flex items-center gap-6">
-          <Link href="/blog" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">Blog</Link>
-          <Link href="/about" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</Link>
-          <a href="https://github.com/aksharjothi-max" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">GitHub</a>
+        <div style={{ display: "flex", gap: "24px" }}>
+          <Link href="/blog" style={{ fontSize: "13px", color: "#86868B", textDecoration: "none" }}>Blog</Link>
+          <Link href="/about" style={{ fontSize: "13px", color: "#86868B", textDecoration: "none" }}>About</Link>
+          <a href="https://github.com/aksharjothi-max" target="_blank" rel="noopener noreferrer" style={{ fontSize: "13px", color: "#86868B", textDecoration: "none" }}>GitHub</a>
         </div>
       </div>
     </footer>

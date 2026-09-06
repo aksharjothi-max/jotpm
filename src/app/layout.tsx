@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
@@ -20,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           display: "flex",
           flexDirection: "column",
           background: "#F8FAFC",
-          color: "#17202A",
+          color: "#1D1D1F",
           fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
           WebkitFontSmoothing: "antialiased",
           margin: 0,

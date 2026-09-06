@@ -8,13 +8,13 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero - Clean Apple-style */}
+      {/* Hero - Apple-style dark section */}
       <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
-        <div className="text-center px-6 max-w-4xl mx-auto">
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-semibold text-white mb-6 tracking-tight">
+        <div className="text-center px-6 max-w-5xl mx-auto">
+          <h1 className="text-7xl md:text-9xl font-semibold text-white mb-6 tracking-tight">
             Jot<span className="text-[#E87532]">PM</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-400 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
             Product management insights, growth strategy frameworks, and lessons from the trenches.
           </p>
           <div className="flex items-center justify-center gap-6">
@@ -34,17 +34,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Latest Article - Full-width card */}
-      <section className="bg-[#F8FAFC] py-20">
-        <div className="max-w-[1000px] mx-auto px-6">
-          <div className="flex items-end justify-between mb-10">
-            <h2 className="text-3xl md:text-4xl font-semibold text-[#173B57] tracking-tight">Latest Writing</h2>
+      {/* Featured Article - Full-width hero card */}
+      <section className="bg-[#F8FAFC] py-24">
+        <div className="max-w-[1100px] mx-auto px-6">
+          <div className="flex items-end justify-between mb-12">
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight">Latest Writing</h2>
             <Link href="/blog" className="text-sm text-[#E87532] font-medium hover:underline">View all →</Link>
           </div>
 
-          <Link href={`/blog/${latest.slug}`} className="group block rounded-2xl overflow-hidden bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300">
+          <Link href={`/blog/${latest.slug}`} className="group block rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300">
             <div className="grid md:grid-cols-2 gap-0">
-              <div className="relative h-64 md:h-auto overflow-hidden bg-gray-100">
+              <div className="relative h-72 md:h-full overflow-hidden bg-gray-100">
                 {latest.image && (
                   <img
                     src={latest.image}
@@ -53,12 +53,12 @@ export default function Home() {
                   />
                 )}
               </div>
-              <div className="p-8 md:p-10 flex flex-col justify-center">
-                <span className="text-xs text-gray-500 mb-2">{latest.date} · {latest.readTime}</span>
-                <h3 className="text-2xl md:text-3xl font-semibold text-[#173B57] mb-3 group-hover:text-[#E87532] transition-colors">
+              <div className="p-10 md:p-14 flex flex-col justify-center">
+                <span className="text-xs text-gray-500 mb-3 uppercase tracking-wide">{latest.date} · {latest.readTime}</span>
+                <h3 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 group-hover:text-[#E87532] transition-colors leading-tight">
                   {latest.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed mb-4">{latest.excerpt}</p>
+                <p className="text-gray-600 leading-relaxed mb-6 text-lg">{latest.excerpt}</p>
                 <span className="text-sm text-[#E87532] font-medium">Read more →</span>
               </div>
             </div>
@@ -66,15 +66,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Other Articles - 3 Column Grid */}
-      <section className="bg-[#F8FAFC] pb-20">
-        <div className="max-w-[1000px] mx-auto px-6">
+      {/* Other Articles - Apple-style grid */}
+      <section className="bg-[#F8FAFC] pb-24">
+        <div className="max-w-[1100px] mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {rest.map((article) => (
               <Link
                 key={article.slug}
                 href={`/blog/${article.slug}`}
-                className="group rounded-2xl overflow-hidden bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300"
+                className="group rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300"
               >
                 <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
                   {article.image && (
@@ -85,9 +85,9 @@ export default function Home() {
                     />
                   )}
                 </div>
-                <div className="p-5">
-                  <span className="text-xs text-gray-500">{article.date}</span>
-                  <h3 className="text-base font-semibold text-[#173B57] mt-1 mb-2 group-hover:text-[#E87532] transition-colors line-clamp-2">
+                <div className="p-6">
+                  <span className="text-xs text-gray-500 uppercase tracking-wide">{article.date}</span>
+                  <h3 className="text-lg font-semibold text-gray-900 mt-2 mb-2 group-hover:text-[#E87532] transition-colors line-clamp-2 leading-snug">
                     {article.title}
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">{article.excerpt}</p>
@@ -98,16 +98,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact - Clean Apple-style */}
-      <section className="bg-black py-24">
-        <div className="max-w-[800px] mx-auto px-6 text-center">
+      {/* Contact - Apple-style dark section */}
+      <section className="bg-black py-32">
+        <div className="max-w-[900px] mx-auto px-6 text-center">
           <h2 className="text-4xl md:text-5xl font-semibold text-white mb-6 tracking-tight">Let&apos;s Connect</h2>
-          <p className="text-lg text-gray-400 max-w-lg mx-auto mb-10">
+          <p className="text-lg text-gray-400 max-w-lg mx-auto mb-12 leading-relaxed">
             Have a growth challenge, want to collaborate, or just want to talk product? I&apos;d love to hear from you.
           </p>
           <a
             href="mailto:aksharjothi@gmail.com"
-            className="inline-block px-8 py-4 rounded-full bg-white text-black font-medium text-base hover:bg-gray-100 transition-all"
+            className="inline-block px-10 py-4 rounded-full bg-white text-black font-medium text-base hover:bg-gray-100 transition-all"
           >
             Get in Touch
           </a>
