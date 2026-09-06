@@ -175,7 +175,6 @@ def generate_article_html(topic, date_str, article_id, content):
       <div class="nav-links">
         <a href="/#about" class="nav-link">About</a>
         <a href="/blog.html" class="nav-link">Blog</a>
-        <a href="/#contact" class="nav-link">Contact</a>
       </div>
     </div>
   </nav>
@@ -221,7 +220,6 @@ def generate_article_html(topic, date_str, article_id, content):
           <a href="/" class="footer-link">Home</a>
           <a href="/blog.html" class="footer-link">Blog</a>
           <a href="/#about" class="footer-link">About</a>
-          <a href="mailto:aksharjothi@gmail.com" class="footer-link">Contact</a>
         </div>
         <div class="footer-social">
           <a href="https://github.com/aksharjothi-max" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

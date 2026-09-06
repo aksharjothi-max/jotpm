@@ -22,7 +22,6 @@
       <div class="nav-links">
         <a href="/#about" class="nav-link">About</a>
         <a href="/blog.html" class="nav-link">Blog</a>
-        <a href="/#contact" class="nav-link">Contact</a>
       </div>
     </div>
   </nav>
@@ -50,7 +49,6 @@
           <a href="/" class="footer-link">Home</a>
           <a href="/blog.html" class="footer-link">Blog</a>
           <a href="/#about" class="footer-link">About</a>
-          <a href="mailto:aksharjothi@gmail.com" class="footer-link">Contact</a>
         </div>
         <div class="footer-social">
           <a href="https://github.com/aksharjothi-max" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
@@ -78,7 +76,7 @@
       
       grid.innerHTML = sorted.map((article) => `
         <article class="blog-card" onclick="window.location.href='/articles/${article.id}.html'">
-          <div class="blog-card-image">
+          <div class="blog-card-image" style="background: ${article.image}">
             <div class="blog-card-image-placeholder">${article.category.charAt(0)}</div>
           </div>
           <div class="blog-card-body">
@@ -86,6 +84,7 @@
             <h3 class="blog-card-title">${article.title}</h3>
             <p class="blog-card-excerpt">${article.excerpt}</p>
             <div class="blog-card-tags">
+              <span class="tag">${formatDate(article.date)}</span>
               ${article.tags.map(tag => `<span class="tag">#${tag}</span>`).join('')}
             </div>
           </div>
