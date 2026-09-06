@@ -3,6 +3,8 @@ import { getArticles } from "@/lib/data";
 
 export default function BlogPage() {
   const articles = getArticles();
+  const latest = articles[0];
+  const rest = articles.slice(1);
 
   return (
     <section className="min-h-screen bg-[#F8FAFC] py-24">
@@ -17,8 +19,39 @@ export default function BlogPage() {
           </p>
         </div>
 
+        {/* Featured Article - Magazine Style */}
+        <Link
+          href={`/blog/${latest.slug}`}
+          className="group block rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300 featured-card mb-12"
+        >
+          <div className="grid md:grid-cols-2 gap-0">
+            <div className="relative h-72 md:h-full overflow-hidden bg-gray-100">
+              {latest.image && (
+                <img
+                  src={latest.image}
+                  alt={latest.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              )}
+            </div>
+            <div className="p-10 md:p-14 flex flex-col justify-center">
+              <span className="text-xs text-[#8492A6] mb-3 uppercase tracking-wide font-medium">
+                {latest.date} · {latest.readTime}
+              </span>
+              <h3 className="text-3xl md:text-4xl font-semibold text-[#17202A] mb-4 group-hover:text-[#E87532] transition-colors leading-tight">
+                {latest.title}
+              </h3>
+              <p className="text-[#4A5568] leading-relaxed mb-6 text-lg">
+                {latest.excerpt}
+              </p>
+              <span className="text-sm text-[#E87532] font-medium">Read more →</span>
+            </div>
+          </div>
+        </Link>
+
+        {/* Other Articles Grid */}
         <div className="grid md:grid-cols-2 gap-6">
-          {articles.map((article) => (
+          {rest.map((article) => (
             <Link
               key={article.slug}
               href={`/blog/${article.slug}`}

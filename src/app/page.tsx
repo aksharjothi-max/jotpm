@@ -60,15 +60,15 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F8FAFC] to-transparent" />
       </section>
 
-      {/* Blog Section */}
+      {/* Featured Article - Magazine Style */}
       <section className="bg-[#F8FAFC] py-24">
         <div className="max-w-[1100px] mx-auto px-6">
           <FadeIn>
             <div className="flex items-end justify-between mb-12">
               <div>
-                <p className="text-sm font-medium text-[#E87532] mb-2 uppercase tracking-wide">Writing</p>
+                <p className="text-sm font-medium text-[#E87532] mb-2 uppercase tracking-wide">Featured</p>
                 <h2 className="text-3xl md:text-4xl font-semibold text-[#17202A] tracking-tight">
-                  Latest Articles
+                  Latest Writing
                 </h2>
               </div>
               <Link
@@ -80,14 +80,50 @@ export default function Home() {
             </div>
           </FadeIn>
 
+          <FadeIn delay={100}>
+            <Link
+              href={`/blog/${latest.slug}`}
+              className="group block rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300 featured-card"
+            >
+              <div className="grid md:grid-cols-2 gap-0">
+                <div className="relative h-80 md:h-full overflow-hidden bg-gray-100">
+                  {latest.image && (
+                    <img
+                      src={latest.image}
+                      alt={latest.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  )}
+                </div>
+                <div className="p-10 md:p-14 flex flex-col justify-center">
+                  <span className="text-xs text-[#8492A6] mb-3 uppercase tracking-wide font-medium">
+                    {latest.date} · {latest.readTime}
+                  </span>
+                  <h3 className="text-3xl md:text-4xl font-semibold text-[#17202A] mb-4 group-hover:text-[#E87532] transition-colors leading-tight">
+                    {latest.title}
+                  </h3>
+                  <p className="text-[#4A5568] leading-relaxed mb-6 text-lg">
+                    {latest.excerpt}
+                  </p>
+                  <span className="text-sm text-[#E87532] font-medium">Read more →</span>
+                </div>
+              </div>
+            </Link>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Blog Grid - Visual, Rich Cards */}
+      <section className="bg-[#F8FAFC] pb-24">
+        <div className="max-w-[1100px] mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articles.map((article, i) => (
+            {rest.map((article, i) => (
               <FadeIn key={article.slug} delay={i * 100}>
                 <Link
                   href={`/blog/${article.slug}`}
                   className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300 article-card"
                 >
-                  <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
                     {article.image && (
                       <img
                         src={article.image}
