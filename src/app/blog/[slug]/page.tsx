@@ -1,4 +1,4 @@
-import { getArticles, getArticleBySlug, formatDate } from "@/lib/data";
+import { getArticles, getArticleBySlug } from "@/lib/data";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import GiscusComments from "@/components/GiscusComments";
@@ -25,17 +25,17 @@ export default async function ArticlePage({
   return (
     <>
       <ArticleJsonLd slug={slug} />
-      <article className="min-h-screen bg-[#FBFBFD] py-12">
+      <article className="min-h-screen bg-white dark:bg-black py-12">
         <div className="max-w-[980px] mx-auto px-6">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-[#86868B] hover:text-[#0071E3] transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-8"
           >
             ← Back to Blog
           </Link>
 
           {article.image && (
-            <div className="mb-8 rounded-2xl overflow-hidden border border-[#D2D2D7]">
+            <div className="mb-8 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
               <img
                 src={article.image}
                 alt={article.title}
@@ -46,14 +46,14 @@ export default async function ArticlePage({
 
           <header className="max-w-3xl mb-12">
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-sm text-[#86868B]">{formatDate(article.date)}</span>
-              <span className="text-sm text-[#D2D2D7]">·</span>
-              <span className="text-sm text-[#86868B]">{article.readTime}</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">{article.date}</span>
+              <span className="text-sm text-gray-300 dark:text-gray-600">·</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">{article.readTime}</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6 text-[#1D1D1F]">
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-6 text-gray-900 dark:text-gray-100">
               {article.title}
             </h1>
-            <p className="text-lg text-[#424245] leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
               {article.excerpt}
             </p>
           </header>
@@ -65,8 +65,8 @@ export default async function ArticlePage({
 
           {/* Related Articles */}
           {related.length > 0 && (
-            <div className="mt-16 pt-8 border-t border-[#D2D2D7]">
-              <h2 className="text-xl font-semibold text-[#1D1D1F] mb-6">
+            <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
                 Continue Reading
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -74,7 +74,7 @@ export default async function ArticlePage({
                   <Link
                     key={r.slug}
                     href={`/blog/${r.slug}`}
-                    className="group rounded-xl overflow-hidden bg-white border border-[#D2D2D7] card-hover"
+                    className="group rounded-xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 card-hover"
                   >
                     {r.image && (
                       <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
@@ -86,11 +86,11 @@ export default async function ArticlePage({
                       </div>
                     )}
                     <div className="p-4">
-                      <h3 className="text-sm font-semibold text-[#1D1D1F] group-hover:text-[#0071E3] transition-colors line-clamp-2">
+                      <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
                         {r.title}
                       </h3>
-                      <span className="text-xs text-[#86868B] mt-1 block">
-                        {formatDate(r.date)}
+                      <span className="text-xs text-gray-500 dark:text-gray-400 mt-1 block">
+                        {r.date}
                       </span>
                     </div>
                   </Link>
@@ -100,8 +100,8 @@ export default async function ArticlePage({
           )}
 
           {/* Comments */}
-          <div className="mt-16 pt-8 border-t border-[#D2D2D7]">
-            <h2 className="text-xl font-semibold text-[#1D1D1F] mb-6">
+          <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
               Comments
             </h2>
             <GiscusComments />

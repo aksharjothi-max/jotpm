@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  /* Apple-style clean palette */
-  --background: #FBFBFD;
+  /* Apple Light Mode */
+  --background: #FFFFFF;
   --foreground: #1D1D1F;
   --muted: #86868B;
   --card: #FFFFFF;
@@ -11,6 +11,19 @@
   --accent-soft: rgba(0, 113, 227, 0.08);
   --primary: #1D1D1F;
   --secondary: #6E6E73;
+}
+
+.dark {
+  /* Apple Dark Mode */
+  --background: #000000;
+  --foreground: #F5F5F7;
+  --muted: #86868B;
+  --card: #1C1C1E;
+  --border: #38383A;
+  --accent: #0A84FF;
+  --accent-soft: rgba(10, 132, 255, 0.12);
+  --primary: #F5F5F7;
+  --secondary: #A1A1A6;
 }
 
 @theme inline {
@@ -40,6 +53,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
@@ -54,6 +68,10 @@ body {
 .card-hover:hover {
   transform: scale(1.01);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
 /* Fade in animation */
@@ -98,13 +116,13 @@ body {
   color: var(--primary);
 }
 .prose p {
-  color: #424245;
+  color: var(--secondary);
   line-height: 1.8;
   margin-bottom: 1.5rem;
   font-size: 1.125rem;
 }
 .prose ul, .prose ol {
-  color: #424245;
+  color: var(--secondary);
   margin-bottom: 1.5rem;
   padding-left: 1.5rem;
 }
@@ -123,7 +141,7 @@ body {
   border-left: 4px solid var(--accent);
   padding-left: 1.5rem;
   margin: 2rem 0;
-  color: #424245;
+  color: var(--secondary);
   font-style: italic;
   font-size: 1.25rem;
 }
@@ -139,7 +157,7 @@ body {
   text-decoration: underline;
 }
 .prose code {
-  background: #F5F5F7;
+  background: var(--accent-soft);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   font-size: 0.875rem;
@@ -155,4 +173,8 @@ body {
   background: none;
   padding: 0;
   color: #F5F5F7;
+}
+
+.dark .prose pre {
+  background: #000000;
 }
