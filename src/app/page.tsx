@@ -12,17 +12,14 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-[#0F2740] overflow-hidden">
-        {/* Background gradient */}
+      <section className="relative bg-[#0F2740] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0F2740] via-[#173B57] to-[#1E4D7B]" />
-        
-        {/* Subtle pattern overlay */}
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: `radial-gradient(circle at 25% 25%, white 1px, transparent 1px), radial-gradient(circle at 75% 75%, white 1px, transparent 1px)`,
           backgroundSize: '60px 60px'
         }} />
         
-        <div className="relative text-center px-6 max-w-5xl mx-auto py-32">
+        <div className="relative text-center px-6 max-w-5xl mx-auto py-32 md:py-40">
           <FadeIn>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-8">
               <span className="w-2 h-2 rounded-full bg-[#E87532] animate-pulse" />
@@ -60,19 +57,18 @@ export default function Home() {
           </FadeIn>
         </div>
         
-        {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F8FAFC] to-transparent" />
       </section>
 
-      {/* Featured Article */}
+      {/* Blog Section */}
       <section className="bg-[#F8FAFC] py-24">
         <div className="max-w-[1100px] mx-auto px-6">
           <FadeIn>
             <div className="flex items-end justify-between mb-12">
               <div>
-                <p className="text-sm font-medium text-[#E87532] mb-2 uppercase tracking-wide">Latest Writing</p>
+                <p className="text-sm font-medium text-[#E87532] mb-2 uppercase tracking-wide">Writing</p>
                 <h2 className="text-3xl md:text-4xl font-semibold text-[#17202A] tracking-tight">
-                  Featured Article
+                  Latest Articles
                 </h2>
               </div>
               <Link
@@ -84,44 +80,8 @@ export default function Home() {
             </div>
           </FadeIn>
 
-          <FadeIn delay={100}>
-            <Link
-              href={`/blog/${latest.slug}`}
-              className="group block rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300 featured-card"
-            >
-              <div className="grid md:grid-cols-2 gap-0">
-                <div className="relative h-72 md:h-full overflow-hidden bg-gray-100">
-                  {latest.image && (
-                    <img
-                      src={latest.image}
-                      alt={latest.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  )}
-                </div>
-                <div className="p-10 md:p-14 flex flex-col justify-center">
-                  <span className="text-xs text-[#8492A6] mb-3 uppercase tracking-wide font-medium">
-                    {latest.date} · {latest.readTime}
-                  </span>
-                  <h3 className="text-3xl md:text-4xl font-semibold text-[#17202A] mb-4 group-hover:text-[#E87532] transition-colors leading-tight">
-                    {latest.title}
-                  </h3>
-                  <p className="text-[#4A5568] leading-relaxed mb-6 text-lg">
-                    {latest.excerpt}
-                  </p>
-                  <span className="text-sm text-[#E87532] font-medium">Read more →</span>
-                </div>
-              </div>
-            </Link>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Other Articles Grid */}
-      <section className="bg-[#F8FAFC] pb-24">
-        <div className="max-w-[1100px] mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {rest.map((article, i) => (
+            {articles.map((article, i) => (
               <FadeIn key={article.slug} delay={i * 100}>
                 <Link
                   href={`/blog/${article.slug}`}
