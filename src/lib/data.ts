@@ -1,6 +1,3 @@
-import fs from "fs";
-import path from "path";
-
 export interface Article {
   slug: string;
   title: string;
@@ -11,12 +8,16 @@ export interface Article {
   image?: string;
 }
 
-const PUBLISHED_FILE = path.join(process.cwd(), "src/lib/published.json");
-
 export function getArticles(): Article[] {
+  if (typeof window !== "undefined") return [];
+  
+  const fs = require("fs");
+  const path = require("path");
+  
+  const PUBLISHED_FILE = path.join(process.cwd(), "src/lib/published.json");
   if (!fs.existsSync(PUBLISHED_FILE)) return [];
+  
   const articles: Article[] = JSON.parse(fs.readFileSync(PUBLISHED_FILE, "utf-8"));
-  // Sort by date descending (newest first)
   return articles.sort((a: Article, b: Article) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
