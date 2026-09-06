@@ -1,4 +1,4 @@
-import { getArticleBySlug, formatDate } from "@/lib/data";
+import { getArticleBySlug } from "@/lib/data";
 
 export default function ArticleJsonLd({ slug }: { slug: string }) {
   const article = getArticleBySlug(slug);

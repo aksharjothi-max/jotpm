@@ -1,28 +1,68 @@
+"use client";
+
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-[#FBFBFD]/80 border-b border-[#D2D2D7]">
-      <div className="max-w-[980px] mx-auto px-6 h-12 flex items-center justify-between">
-        <Link href="/" className="text-sm font-semibold tracking-tight text-[#1D1D1F]">
-          Jot<span className="text-[#0071E3]">PM</span>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-lg shadow-sm border-b border-gray-100"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-[1100px] mx-auto px-6 h-16 flex items-center justify-between">
+        <Link
+          href="/"
+          className={`text-xl font-semibold tracking-tight transition-colors ${
+            scrolled ? "text-[#17202A]" : "text-white"
+          }`}
+        >
+          Jot<span className="text-[#E87532]">PM</span>
         </Link>
         <nav className="flex items-center gap-8">
           <Link
+            href="/"
+            className={`text-sm font-medium transition-colors ${
+              scrolled
+                ? "text-[#4A5568] hover:text-[#17202A]"
+                : "text-white/80 hover:text-white"
+            }`}
+          >
+            Home
+          </Link>
+          <Link
             href="/blog"
-            className="text-xs text-[#424245] hover:text-[#1D1D1F] transition-colors"
+            className={`text-sm font-medium transition-colors ${
+              scrolled
+                ? "text-[#4A5568] hover:text-[#17202A]"
+                : "text-white/80 hover:text-white"
+            }`}
           >
             Blog
           </Link>
           <Link
-            href="/#about"
-            className="text-xs text-[#424245] hover:text-[#1D1D1F] transition-colors"
+            href="/about"
+            className={`text-sm font-medium transition-colors ${
+              scrolled
+                ? "text-[#4A5568] hover:text-[#17202A]"
+                : "text-white/80 hover:text-white"
+            }`}
           >
             About
           </Link>
           <Link
             href="/#contact"
-            className="text-xs font-medium px-3 py-1 rounded-full bg-[#0071E3] text-white hover:bg-blue-600 transition-all"
+            className="px-5 py-2 rounded-full bg-[#E87532] text-white text-sm font-medium hover:bg-[#D5672F] transition-all shadow-sm hover:shadow-md"
           >
             Contact
           </Link>
