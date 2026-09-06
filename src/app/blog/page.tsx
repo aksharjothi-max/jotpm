@@ -7,11 +7,11 @@ export default function BlogPage() {
   const rest = articles.slice(1);
 
   return (
-    <section className="min-h-screen bg-[#F8FAFC] py-24">
+    <section className="min-h-screen bg-[#F8FAFC] py-20">
       <div className="max-w-[1100px] mx-auto px-6">
-        <div className="mb-16">
-          <p className="text-sm font-medium text-[#E87532] mb-2 uppercase tracking-wide">Blog</p>
-          <h1 className="text-4xl md:text-5xl font-semibold text-[#17202A] tracking-tight mb-4">
+        <div className="mb-14">
+          <p className="text-sm font-medium text-[#E87532] mb-1 uppercase tracking-wide">Blog</p>
+          <h1 className="text-3xl md:text-4xl font-semibold text-[#17202A] tracking-tight mb-3">
             Writing on Product & Growth
           </h1>
           <p className="text-lg text-[#4A5568] max-w-2xl">
@@ -22,10 +22,10 @@ export default function BlogPage() {
         {/* Featured Article - Magazine Style */}
         <Link
           href={`/blog/${latest.slug}`}
-          className="group block rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300 featured-card mb-12"
+          className="group block rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-300 featured-card mb-10"
         >
           <div className="grid md:grid-cols-2 gap-0">
-            <div className="relative h-72 md:h-full overflow-hidden bg-gray-100">
+            <div className="relative h-72 md:h-full min-h-[300px] overflow-hidden bg-gray-100">
               {latest.image && (
                 <img
                   src={latest.image}
@@ -34,14 +34,14 @@ export default function BlogPage() {
                 />
               )}
             </div>
-            <div className="p-10 md:p-14 flex flex-col justify-center">
+            <div className="p-8 md:p-12 flex flex-col justify-center">
               <span className="text-xs text-[#8492A6] mb-3 uppercase tracking-wide font-medium">
                 {latest.date} · {latest.readTime}
               </span>
-              <h3 className="text-3xl md:text-4xl font-semibold text-[#17202A] mb-4 group-hover:text-[#E87532] transition-colors leading-tight">
+              <h3 className="text-2xl md:text-3xl font-semibold text-[#17202A] mb-3 group-hover:text-[#E87532] transition-colors leading-tight">
                 {latest.title}
               </h3>
-              <p className="text-[#4A5568] leading-relaxed mb-6 text-lg">
+              <p className="text-[#4A5568] leading-relaxed mb-5">
                 {latest.excerpt}
               </p>
               <span className="text-sm text-[#E87532] font-medium">Read more →</span>
@@ -49,15 +49,15 @@ export default function BlogPage() {
           </div>
         </Link>
 
-        {/* Other Articles Grid */}
+        {/* Other Articles Grid - 2 Column */}
         <div className="grid md:grid-cols-2 gap-6">
           {rest.map((article) => (
             <Link
               key={article.slug}
               href={`/blog/${article.slug}`}
-              className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300 article-card"
+              className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-300 article-card"
             >
-              <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
+              <div className="relative aspect-[16/10] overflow-hidden bg-gray-100">
                 {article.image && (
                   <img
                     src={article.image}
