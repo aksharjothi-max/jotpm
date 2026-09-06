@@ -27,8 +27,8 @@
     <div class="container nav-inner">
       <a href="/" class="nav-logo">JotPM</a>
       <div class="nav-links">
-        <a href="/#about" class="nav-link">About</a>
         <a href="/blog.html" class="nav-link">Blog</a>
+        <a href="/#about" class="nav-link">About</a>
         <a href="/#contact" class="nav-link">Contact</a>
       </div>
     </div>
@@ -46,7 +46,29 @@
     </div>
   </header>
 
-  <!-- About -->
+  <!-- Latest Articles -->
+  <section class="section blog">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Latest</div>
+        <h2 class="section-title">Recent Articles</h2>
+        <p class="section-desc">
+          Thoughts on product management, growth, and strategy.
+        </p>
+      </div>
+      <div class="blog-grid" id="recent-articles">
+        <!-- Dynamically loaded -->
+      </div>
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="/blog.html" class="btn-secondary">
+          View All Articles
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About (below blog) -->
   <section id="about" class="section about">
     <div class="container">
       <div class="about-avatar">AJ</div>
@@ -69,28 +91,6 @@
           <div class="stat-value">2026</div>
           <div class="stat-label">Started</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Latest Articles -->
-  <section class="section blog">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow">Latest</div>
-        <h2 class="section-title">Recent Articles</h2>
-        <p class="section-desc">
-          Thoughts on product management, growth, and strategy.
-        </p>
-      </div>
-      <div class="blog-grid" id="recent-articles">
-        <!-- Dynamically loaded -->
-      </div>
-      <div style="text-align: center; margin-top: 3rem;">
-        <a href="/blog.html" class="btn-secondary">
-          View All Articles
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
       </div>
     </div>
   </section>
