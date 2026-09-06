@@ -24,91 +24,106 @@ ARTICLE_TOPICS = [
         "title": "The Art of Saying No: How Great PMs Prioritize",
         "category": "Product Thinking",
         "excerpt": "Every feature request sounds reasonable in isolation. Here's the framework that separates good PMs from great ones.",
-        "tags": ["prioritization", "strategy", "decision-making"]
+        "tags": ["prioritization", "strategy", "decision-making"],
+        "content_generator": "generate_thinking_content"
     },
     {
         "title": "Retention Before Acquisition: The Growth Sequence",
         "category": "Growth Strategy",
         "excerpt": "Most startups die from leaky buckets, not empty funnels. Why fixing retention first is the smartest growth move.",
-        "tags": ["retention", "growth", "metrics"]
+        "tags": ["retention", "growth", "metrics"],
+        "content_generator": "generate_growth_content"
     },
     {
         "title": "The Feature Trap: When More Becomes Less",
         "category": "Product Thinking",
         "excerpt": "Why adding features can actually hurt your product — and how to know when simplicity is the real innovation.",
-        "tags": ["simplicity", "features", "ux"]
+        "tags": ["simplicity", "features", "ux"],
+        "content_generator": "generate_thinking_content"
     },
     {
         "title": "User Interviews That Actually Change Decisions",
         "category": "Product Thinking",
         "excerpt": "Most user research is theater. Here's how to run interviews that produce real, actionable insights.",
-        "tags": ["user-research", "interviews", "discovery"]
+        "tags": ["user-research", "interviews", "discovery"],
+        "content_generator": "generate_thinking_content"
     },
     {
         "title": "The Metrics That Don't Matter (And the Ones That Do)",
         "category": "Growth Strategy",
         "excerpt": "Vanity metrics feel good but mislead. How to identify the numbers that actually predict business success.",
-        "tags": ["metrics", "analytics", "strategy"]
+        "tags": ["metrics", "analytics", "strategy"],
+        "content_generator": "generate_growth_content"
     },
     {
         "title": "Shipping Fast vs. Shipping Right: The PM's Dilemma",
         "category": "Execution & Delivery",
         "excerpt": "Speed and quality aren't opposites — if you know when to optimize for each. A framework for the trade-off.",
-        "tags": ["execution", "speed", "quality"]
+        "tags": ["execution", "speed", "quality"],
+        "content_generator": "generate_execution_content"
     },
     {
         "title": "The Onboarding Moment: Where Products Win or Lose",
         "category": "Growth Strategy",
         "excerpt": "You have 30 seconds to prove value. How the best products turn first-time users into lifelong customers.",
-        "tags": ["onboarding", "activation", "retention"]
+        "tags": ["onboarding", "activation", "retention"],
+        "content_generator": "generate_growth_content"
     },
     {
         "title": "Stakeholder Management as a Superpower",
         "category": "Execution & Delivery",
         "excerpt": "The PM role is 20% product, 80% people. How to align executives, engineers, and designers without authority.",
-        "tags": ["stakeholders", "communication", "leadership"]
+        "tags": ["stakeholders", "communication", "leadership"],
+        "content_generator": "generate_execution_content"
     },
     {
         "title": "Building Products for People Who Don't Care",
         "category": "Product Thinking",
         "excerpt": "Not every user is passionate. How to design for the indifferent majority — and why that's where scale lives.",
-        "tags": ["design", "user-experience", "scale"]
+        "tags": ["design", "user-experience", "scale"],
+        "content_generator": "generate_thinking_content"
     },
     {
         "title": "The Pivot Decision: When to Persevere and When to Fold",
         "category": "Strategy",
         "excerpt": "How to know if your product needs a major change — and the data signals that should trigger the conversation.",
-        "tags": ["pivot", "strategy", "data"]
+        "tags": ["pivot", "strategy", "data"],
+        "content_generator": "generate_strategy_content"
     },
     {
         "title": "Why Your Roadmap Is Lying to You",
         "category": "Execution & Delivery",
         "excerpt": "Roadmaps create false certainty. Better approaches to planning in an uncertain world.",
-        "tags": ["roadmap", "planning", "agile"]
+        "tags": ["roadmap", "planning", "agile"],
+        "content_generator": "generate_execution_content"
     },
     {
         "title": "The Psychology of Pricing: It's Not About the Price",
         "category": "Growth Strategy",
         "excerpt": "How framing, anchoring, and perceived value matter more than the number on the price tag.",
-        "tags": ["pricing", "psychology", "monetization"]
+        "tags": ["pricing", "psychology", "monetization"],
+        "content_generator": "generate_growth_content"
     },
     {
         "title": "From Zero to One: Product Thinking for New Markets",
         "category": "Product Thinking",
         "excerpt": "When there's no playbook, no competitors, and no users yet. How to build when you're truly starting from scratch.",
-        "tags": ["innovation", "0-to-1", "new-markets"]
+        "tags": ["innovation", "0-to-1", "new-markets"],
+        "content_generator": "generate_thinking_content"
     },
     {
         "title": "The Feedback Loop: Turning Users Into Co-Creators",
         "category": "Product Thinking",
         "excerpt": "Great products are built with users, not for them. How to create feedback loops that drive real innovation.",
-        "tags": ["feedback", "community", "co-creation"]
+        "tags": ["feedback", "community", "co-creation"],
+        "content_generator": "generate_thinking_content"
     },
     {
         "title": "Growth Loops vs. Funnels: The Modern Growth Model",
         "category": "Growth Strategy",
         "excerpt": "Funnels end. Loops compound. Why the best growth strategies are circular, not linear.",
-        "tags": ["growth-loops", "funnels", "viral"]
+        "tags": ["growth-loops", "funnels", "viral"],
+        "content_generator": "generate_growth_content"
     }
 ]
 
@@ -129,21 +144,11 @@ def save_articles_data(data):
     with open(ARTICLES_DATA, 'w') as f:
         json.dump(data, f, indent=2)
 
-def generate_article(topic, date_str):
-    """Generate a full HTML article based on the topic."""
-    article_id = f"article-{date_str.replace(' ', '-').lower()}"
-    
-    # Generate article content based on category
-    category = topic["category"]
-    
-    if category == "Growth Strategy":
-        content = generate_growth_content(topic)
-    elif category == "Product Thinking":
-        content = generate_thinking_content(topic)
-    elif category == "Execution & Delivery":
-        content = generate_execution_content(topic)
-    else:
-        content = generate_strategy_content(topic)
+def generate_article_html(topic, date_str, article_id, content):
+    """Generate full HTML article."""
+    # Use the correct relative path for CSS/JS based on article location
+    css_path = "css/style.css"
+    js_path = "js/app.js"
     
     html = f'''<!DOCTYPE html>
 <html lang="en">
@@ -155,7 +160,7 @@ def generate_article(topic, date_str):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="{css_path}">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
 </head>
 <body>
@@ -227,15 +232,10 @@ def generate_article(topic, date_str):
       </div>
     </div>
   </footer>
-  <script src="js/app.js"></script>
+  <script src="{js_path}"></script>
 </body>
 </html>'''
-    
-    filepath = os.path.join(ARTICLES_DIR, f"{article_id}.html")
-    with open(filepath, 'w') as f:
-        f.write(html)
-    
-    return article_id, filepath
+    return html
 
 def generate_growth_content(topic):
     return f'''
@@ -401,6 +401,18 @@ def generate_strategy_content(topic):
       <p>Think big. Start small. Scale fast.</p>
     '''
 
+def get_content(topic):
+    """Generate article content based on topic category."""
+    category = topic["category"]
+    if category == "Growth Strategy":
+        return generate_growth_content(topic)
+    elif category == "Product Thinking":
+        return generate_thinking_content(topic)
+    elif category == "Execution & Delivery":
+        return generate_execution_content(topic)
+    else:
+        return generate_strategy_content(topic)
+
 def send_email(subject, body, to="aksharjothi@gmail.com"):
     """Send email using himalaya CLI."""
     # Create a temporary file for the email body
@@ -408,7 +420,7 @@ def send_email(subject, body, to="aksharjothi@gmail.com"):
     with open(tmp_file, 'w') as f:
         f.write(body)
     
-    cmd = f'cat {tmp_file} | himalaya send --to {to} --subject "{subject}"'
+    cmd = f'cat {tmp_file} | himalaya message send -H "To:{to}" -H "Subject:{subject}"'
     stdout, stderr, rc = run(cmd, timeout=30)
     
     if rc == 0:
@@ -434,8 +446,17 @@ def main():
     
     print(f"Generating article: {topic['title']}")
     
-    # Generate article
-    article_id, filepath = generate_article(topic, date_str)
+    # Generate article ID and content
+    article_id = f"daily-{today.strftime('%Y-%m-%d')}"
+    content = get_content(topic)
+    
+    # Generate article HTML
+    html = generate_article_html(topic, date_str, article_id, content)
+    
+    # Save article
+    filepath = os.path.join(ARTICLES_DIR, f"{article_id}.html")
+    with open(filepath, 'w') as f:
+        f.write(html)
     
     # Update articles data
     article_entry = {

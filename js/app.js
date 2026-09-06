@@ -110,7 +110,7 @@ function loadRecentArticles() {
   const recent = articles.slice(0, 3);
   
   container.innerHTML = recent.map((article, index) => `
-    <article class="blog-card animate-fade-in-up animate-delay-${(index + 1) * 100}" onclick="window.location.href='articles/${article.id}.html'">
+    <article class="blog-card animate-fade-in-up animate-delay-${(index + 1) * 100}" onclick="window.location.href='/articles/${article.id}.html'">
       <div class="blog-card-image" style="background: ${article.image}">
         <span class="blog-card-category">${article.category}</span>
       </div>
