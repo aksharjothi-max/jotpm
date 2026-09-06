@@ -25,22 +25,15 @@ export default async function ArticlePage({
   return (
     <>
       <ArticleJsonLd slug={slug} />
-      <article className="min-h-screen bg-white dark:bg-black py-12">
+      <article className="min-h-screen bg-white dark:bg-gray-950 py-12">
         <div className="max-w-[980px] mx-auto px-6">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-8"
-          >
+          <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mb-8">
             ← Back to Blog
           </Link>
 
           {article.image && (
             <div className="mb-8 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
-              <img
-                src={article.image}
-                alt={article.title}
-                className="w-full h-auto"
-              />
+              <img src={article.image} alt={article.title} className="w-full h-auto" />
             </div>
           )}
 
@@ -58,40 +51,22 @@ export default async function ArticlePage({
             </p>
           </header>
 
-          <div
-            className="prose"
-            dangerouslySetInnerHTML={{ __html: article.content }}
-          />
+          <div className="prose" dangerouslySetInnerHTML={{ __html: article.content }} />
 
-          {/* Related Articles */}
           {related.length > 0 && (
             <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
-                Continue Reading
-              </h2>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">Continue Reading</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {related.map((r) => (
-                  <Link
-                    key={r.slug}
-                    href={`/blog/${r.slug}`}
-                    className="group rounded-xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 card-hover"
-                  >
+                  <Link key={r.slug} href={`/blog/${r.slug}`} className="group rounded-xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 card-hover">
                     {r.image && (
-                      <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
-                        <img
-                          src={r.image}
-                          alt={r.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
+                      <div className="relative aspect-[16/9] overflow-hidden bg-gray-100 dark:bg-gray-800">
+                        <img src={r.image} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                       </div>
                     )}
                     <div className="p-4">
-                      <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
-                        {r.title}
-                      </h3>
-                      <span className="text-xs text-gray-500 dark:text-gray-400 mt-1 block">
-                        {r.date}
-                      </span>
+                      <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">{r.title}</h3>
+                      <span className="text-xs text-gray-500 dark:text-gray-400 mt-1 block">{r.date}</span>
                     </div>
                   </Link>
                 ))}
@@ -99,11 +74,8 @@ export default async function ArticlePage({
             </div>
           )}
 
-          {/* Comments */}
           <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
-              Comments
-            </h2>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">Comments</h2>
             <GiscusComments />
           </div>
         </div>

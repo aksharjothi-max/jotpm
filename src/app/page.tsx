@@ -32,11 +32,11 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white dark:to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white dark:to-gray-950" />
       </section>
 
       {/* Featured Latest Article */}
-      <section className="bg-white dark:bg-black py-24">
+      <section className="bg-white dark:bg-gray-950 py-24">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="flex items-end justify-between mb-12">
             <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 dark:text-gray-100 tracking-tight">
@@ -56,7 +56,7 @@ export default function Home() {
             className="group block rounded-3xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 card-hover mb-8"
           >
             <div className="grid md:grid-cols-2 gap-0">
-              <div className="relative aspect-[4/3] md:aspect-auto overflow-hidden bg-gray-100">
+              <div className="relative aspect-[4/3] md:aspect-auto overflow-hidden bg-gray-100 dark:bg-gray-800">
                 {latest.image && (
                   <img
                     src={latest.image}
@@ -80,7 +80,7 @@ export default function Home() {
             </div>
           </Link>
 
-          {/* Other Articles - Side by Side */}
+          {/* Other Articles - 3 Column Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {rest.map((article) => (
               <Link
@@ -88,7 +88,7 @@ export default function Home() {
                 href={`/blog/${article.slug}`}
                 className="group rounded-2xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 card-hover"
               >
-                <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
+                <div className="relative aspect-[16/9] overflow-hidden bg-gray-100 dark:bg-gray-800">
                   {article.image && (
                     <img
                       src={article.image}
