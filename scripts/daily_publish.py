@@ -557,8 +557,8 @@ JotPM Daily Publisher
     .tags {{ display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }}
     .tag {{ padding: 0.25rem 0.625rem; background: #F5F5F7; color: #424245; font-size: 0.75rem; border-radius: 9999px; }}
     .cta {{ text-align: center; margin: 2rem 0; }}
-    .btn {{ display: inline-block; padding: 0.875rem 2rem; background: #0071E3; color: #FFFFFF; font-size: 1rem; font-weight: 600; border-radius: 9999px; text-decoration: none; }}
-    .btn:hover {{ background: #0077ED; }}
+    .btn {{ display: inline-block; padding: 0.875rem 2rem; background: #10B981; color: #FFFFFF; font-size: 1rem; font-weight: 600; border-radius: 9999px; text-decoration: none; }}
+    .btn:hover {{ background: #059669; }}
     .footer {{ text-align: center; font-size: 0.75rem; color: #86868B; margin-top: 2rem; }}
   </style>
 </head>

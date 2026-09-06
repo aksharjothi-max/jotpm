@@ -1,7 +1,10 @@
 /* JotPM - Personal Profile & Blog
- * Design System: Apple-inspired premium, minimal, clean
- * Font: Inter (variable, 100-900)
- * Colors: Apple Blue #0071E3, White #FFFFFF, Gray #86868B, Dark #1D1D1F
+ * Design System: Premium, minimal, clean
+ * Color Psychology:
+ *   Blue (#0071E3) = trust, calm, reliability (backbone)
+ *   Green (#10B981) = success, "go" (CTAs - breaks from cool palette)
+ *   Charcoal (#1D1D1F) = premium, easy on eyes (text)
+ *   60/30/10 rule: 60% neutral base, 30% blue secondary, 10% green accent
  */
 
 /* ===== FONT ===== */
@@ -15,31 +18,48 @@
 
 /* ===== CSS VARIABLES ===== */
 :root {
+  /* Primary - Trust Blue */
   --blue: #0071E3;
   --blue-hover: #0077ED;
   --blue-light: #E8F4FD;
   --blue-dark: #0058B0;
+
+  /* Accent - Success Green (warm, breaks from cool palette) */
+  --green: #10B981;
+  --green-hover: #059669;
+  --green-light: #D1FAE5;
+
+  /* Neutrals - Light & Breathable */
   --white: #FFFFFF;
   --gray-10: #F5F5F7;
   --gray-20: #E8E8ED;
   --gray-30: #D2D2D7;
   --gray-50: #86868B;
   --gray-70: #6E6E73;
+
+  /* Text - Softened Charcoal (premium, not harsh black) */
   --dark: #1D1D1F;
   --dark-20: #424245;
-  --black: #000000;
+
+  /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 12px 0 rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 8px 24px 0 rgba(0, 0, 0, 0.08);
   --shadow-xl: 0 16px 40px 0 rgba(0, 0, 0, 0.1);
+
+  /* Radius */
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
   --radius-xl: 1.25rem;
   --radius-2xl: 1.5rem;
   --radius-full: 9999px;
+
+  /* Transitions */
   --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Font */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
 }
 
@@ -214,22 +234,24 @@ button {
   margin-right: auto;
 }
 
+/* ===== HERO CTA (Green - Success/Go) ===== */
 .hero-cta {
   display: inline-block;
   padding: 0.875rem 2.25rem;
-  background: #FFFFFF;
-  color: #0071E3;
+  background: var(--green);
+  color: var(--white);
   font-size: 1.0625rem;
   font-weight: 600;
   border-radius: 9999px;
   transition: var(--transition);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
 }
 
 .hero-cta:hover {
-  background: #F5F5F7;
+  background: var(--green-hover);
+  color: var(--white);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
 }
 
 /* ===== BUTTONS ===== */
@@ -238,18 +260,20 @@ button {
   align-items: center;
   gap: 0.375rem;
   padding: 0.75rem 1.75rem;
-  background: var(--blue);
+  background: var(--green);
   color: var(--white);
   font-size: 0.9375rem;
   font-weight: 500;
   border-radius: var(--radius-full);
   transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
 }
 
 .btn-primary:hover {
-  background: var(--blue-hover);
+  background: var(--green-hover);
   text-decoration: none;
   color: var(--white);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .btn-secondary {
@@ -262,6 +286,7 @@ button {
   font-size: 0.9375rem;
   font-weight: 500;
   border-radius: var(--radius-full);
+  border: 1px solid var(--blue);
   transition: var(--transition);
 }
 
