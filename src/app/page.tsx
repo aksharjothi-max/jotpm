@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero - Apple-style dark section */}
+      {/* Hero Section - Apple-style dark header */}
       <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
         <div className="text-center px-6 max-w-5xl mx-auto">
           <h1 className="text-7xl md:text-9xl font-semibold text-white mb-6 tracking-tight">
@@ -20,13 +20,13 @@ export default function Home() {
           <div className="flex items-center justify-center gap-6">
             <Link
               href="/blog"
-              className="px-8 py-4 rounded-full bg-white text-black font-medium text-base hover:bg-gray-100 transition-all"
+              className="px-8 py-4 rounded-full bg-white text-black font-medium text-base hover:bg-gray-100 transition-all btn-primary"
             >
               Read the Blog
             </Link>
             <Link
               href="/about"
-              className="px-8 py-4 rounded-full border border-white/30 text-white font-medium text-base hover:bg-white/10 transition-all"
+              className="px-8 py-4 rounded-full border border-white/30 text-white font-medium text-base hover:bg-white/10 transition-all btn-secondary"
             >
               About Me
             </Link>
@@ -42,7 +42,10 @@ export default function Home() {
             <Link href="/blog" className="text-sm text-[#E87532] font-medium hover:underline">View all →</Link>
           </div>
 
-          <Link href={`/blog/${latest.slug}`} className="group block rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300">
+          <Link
+            href={`/blog/${latest.slug}`}
+            className="group block rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300 featured-card"
+          >
             <div className="grid md:grid-cols-2 gap-0">
               <div className="relative h-72 md:h-full overflow-hidden bg-gray-100">
                 {latest.image && (
@@ -54,11 +57,15 @@ export default function Home() {
                 )}
               </div>
               <div className="p-10 md:p-14 flex flex-col justify-center">
-                <span className="text-xs text-gray-500 mb-3 uppercase tracking-wide">{latest.date} · {latest.readTime}</span>
+                <span className="text-xs text-gray-500 mb-3 uppercase tracking-wide">
+                  {latest.date} · {latest.readTime}
+                </span>
                 <h3 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-4 group-hover:text-[#E87532] transition-colors leading-tight">
                   {latest.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed mb-6 text-lg">{latest.excerpt}</p>
+                <p className="text-gray-600 leading-relaxed mb-6 text-lg">
+                  {latest.excerpt}
+                </p>
                 <span className="text-sm text-[#E87532] font-medium">Read more →</span>
               </div>
             </div>
@@ -66,7 +73,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Other Articles - Apple-style grid */}
+      {/* Other Articles - Grid */}
       <section className="bg-[#F8FAFC] pb-24">
         <div className="max-w-[1100px] mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -74,7 +81,7 @@ export default function Home() {
               <Link
                 key={article.slug}
                 href={`/blog/${article.slug}`}
-                className="group rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300"
+                className="group rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-2xl transition-all duration-300 article-card"
               >
                 <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
                   {article.image && (
@@ -85,12 +92,14 @@ export default function Home() {
                     />
                   )}
                 </div>
-                <div className="p-6">
+                <div className="p-5">
                   <span className="text-xs text-gray-500 uppercase tracking-wide">{article.date}</span>
-                  <h3 className="text-lg font-semibold text-gray-900 mt-2 mb-2 group-hover:text-[#E87532] transition-colors line-clamp-2 leading-snug">
+                  <h3 className="text-base font-semibold text-gray-900 mt-2 mb-2 group-hover:text-[#E87532] transition-colors line-clamp-2 leading-snug">
                     {article.title}
                   </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">{article.excerpt}</p>
+                  <p className="text-sm text-gray-600 leading-relaxed line-clamp-2">
+                    {article.excerpt}
+                  </p>
                 </div>
               </Link>
             ))}
