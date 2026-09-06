@@ -155,8 +155,16 @@ button {
 .nav-logo {
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--dark);
   letter-spacing: -0.02em;
+  color: var(--dark);
+}
+
+.nav-logo .jot {
+  color: var(--dark);
+}
+
+.nav-logo .pm {
+  color: var(--blue);
 }
 
 .nav-links {
@@ -194,11 +202,11 @@ button {
   color: var(--white) !important;
 }
 
-/* ===== HERO — Apple Event style ===== */
+/* ===== HERO — Full Charcoal ===== */
 .hero {
   text-align: center;
   padding: 8rem 0 6rem;
-  background: linear-gradient(180deg, #1D1D1F 0%, #000000 100%);
+  background: #1D1D1F;
   position: relative;
   overflow: hidden;
 }
@@ -207,7 +215,7 @@ button {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center top, rgba(255,255,255,0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center top, rgba(255,255,255,0.05) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -221,7 +229,7 @@ button {
   font-weight: 700;
   letter-spacing: -0.05em;
   margin-bottom: 1.5rem;
-  text-shadow: 0 0 80px rgba(0,113,227,0.6), 0 0 40px rgba(0,113,227,0.4);
+  text-shadow: 0 0 80px rgba(0,113,227,0.5), 0 0 40px rgba(0,113,227,0.3);
   animation: glow-pulse 3s ease-in-out infinite;
 }
 
@@ -234,8 +242,8 @@ button {
 }
 
 @keyframes glow-pulse {
-  0%, 100% { text-shadow: 0 0 80px rgba(0,113,227,0.6), 0 0 40px rgba(0,113,227,0.4); }
-  50% { text-shadow: 0 0 100px rgba(0,113,227,0.8), 0 0 60px rgba(0,113,227,0.6); }
+  0%, 100% { text-shadow: 0 0 80px rgba(0,113,227,0.5), 0 0 40px rgba(0,113,227,0.3); }
+  50% { text-shadow: 0 0 100px rgba(0,113,227,0.7), 0 0 60px rgba(0,113,227,0.5); }
 }
 
 .hero-headline {
