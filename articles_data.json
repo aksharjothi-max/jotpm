@@ -1,0 +1,45 @@
+{
+  "articles": [
+    {
+      "id": "first-article",
+      "title": "The North Star Metric: Why Every Growth Team Needs One",
+      "category": "Growth Strategy",
+      "excerpt": "A single metric that best captures the core value your product delivers. How to define it, measure it, and align your entire organization around it.",
+      "tags": ["growth", "metrics", "strategy"],
+      "date": "September 7, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/first-article.html",
+      "status": "published"
+    },
+    {
+      "id": "antilibrary-of-pm",
+      "title": "The Antilibrary of Product Management: Why You Should Collect More Ideas Than You Can Ever Use",
+      "category": "Product Thinking",
+      "excerpt": "Nassim Taleb's antilibrary concept reveals why the best PMs build vast collections of unbuilt ideas — and how this paradox makes them smarter.",
+      "tags": ["antilibrary", "creativity", "decision-making", "product-thinking"],
+      "date": "September 7, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/antilibrary-of-pm.html",
+      "status": "published"
+    },
+    {
+      "id": "lighthouse-effect",
+      "title": "The Lighthouse Effect: Why Product Teams Get Stuck Maintaining Instead of Building",
+      "category": "Execution & Delivery",
+      "excerpt": "How maintenance quietly consumes your team's capacity — and the playbook for breaking free and getting back to building.",
+      "tags": ["lighthouse-effect", "team-capacity", "maintenance", "execution"],
+      "date": "September 7, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/lighthouse-effect.html",
+      "status": "published"
+    },
+    {
+      "id": "shadow-roadmap",
+      "title": "The Shadow Roadmap: Building the Strategy No One Sees",
+      "category": "Strategy",
+      "excerpt": "Why the most important roadmap you maintain is the one nobody sees — and how it becomes your competitive advantage.",
+      "tags": ["shadow-roadmap", "strategy", "planning", "leadership"],
+      "date": "September 7, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/shadow-roadmap.html",
+      "status": "published"
+    }
+  ],
+  "last_index": -1
+}
