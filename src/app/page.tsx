@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero — Compact, editorial */}
       <section className="relative bg-[#0F2740] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0F2740] via-[#173B57] to-[#1E4D7B]" />
         <div className="absolute inset-0 opacity-[0.03]" style={{
@@ -16,7 +16,7 @@ export default function Home() {
           backgroundSize: '60px 60px'
         }} />
         
-        <div className="relative text-center px-6 max-w-5xl mx-auto py-24 md:py-32">
+        <div className="relative text-center px-6 max-w-4xl mx-auto py-20 md:py-28">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
             <span className="w-2 h-2 rounded-full bg-[#E87532] animate-pulse" />
             <span className="text-sm text-white/90 font-medium">Product Management Insights</span>
@@ -26,7 +26,7 @@ export default function Home() {
             Jot<span className="text-[#E87532]">PM</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-white/70 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-lg md:text-xl text-white/70 mb-8 max-w-2xl mx-auto font-light leading-relaxed">
             Product management insights, growth strategy frameworks, and lessons from the trenches of building products that matter.
           </p>
           
@@ -46,23 +46,20 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F8FAFC] to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#F8FAFC] to-transparent" />
       </section>
 
-      {/* Featured Article - Magazine Style */}
-      <section className="bg-[#F8FAFC] pt-16 pb-20">
+      {/* Featured Article — Magazine split, rich */}
+      <section className="bg-[#F8FAFC] pt-12 pb-16">
         <div className="max-w-[1100px] mx-auto px-6">
-          <div className="flex items-end justify-between mb-10">
+          <div className="flex items-end justify-between mb-8">
             <div>
               <p className="text-sm font-medium text-[#E87532] mb-1 uppercase tracking-wide">Featured</p>
               <h2 className="text-2xl md:text-3xl font-semibold text-[#17202A] tracking-tight">
                 Latest Writing
               </h2>
             </div>
-            <Link
-              href="/blog"
-              className="text-sm text-[#E87532] font-medium hover:underline"
-            >
+            <Link href="/blog" className="text-sm text-[#E87532] font-medium hover:underline">
               View all →
             </Link>
           </div>
@@ -72,7 +69,7 @@ export default function Home() {
             className="group block rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all duration-300 featured-card"
           >
             <div className="grid md:grid-cols-2 gap-0">
-              <div className="relative h-72 md:h-full min-h-[300px] overflow-hidden bg-gray-100">
+              <div className="relative h-64 md:h-full min-h-[280px] overflow-hidden bg-gray-100">
                 {latest.image && (
                   <img
                     src={latest.image}
@@ -81,14 +78,14 @@ export default function Home() {
                   />
                 )}
               </div>
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                <span className="text-xs text-[#8492A6] mb-3 uppercase tracking-wide font-medium">
+              <div className="p-8 md:p-10 flex flex-col justify-center">
+                <span className="text-xs text-[#8492A6] mb-2 uppercase tracking-wide font-medium">
                   {latest.date} · {latest.readTime}
                 </span>
                 <h3 className="text-2xl md:text-3xl font-semibold text-[#17202A] mb-3 group-hover:text-[#E87532] transition-colors leading-tight">
                   {latest.title}
                 </h3>
-                <p className="text-[#4A5568] leading-relaxed mb-5">
+                <p className="text-[#4A5568] leading-relaxed mb-4">
                   {latest.excerpt}
                 </p>
                 <span className="text-sm text-[#E87532] font-medium">Read more →</span>
@@ -98,8 +95,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Blog Grid - 2 Column Editorial */}
-      <section className="bg-[#F8FAFC] pb-20">
+      {/* Blog Grid — 2 Column, denser, editorial */}
+      <section className="bg-[#F8FAFC] pb-16">
         <div className="max-w-[1100px] mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-6">
             {rest.map((article) => (
@@ -132,13 +129,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="bg-[#0F2740] py-20">
+      {/* About — Editorial dark section */}
+      <section id="about" className="bg-[#0F2740] py-16">
         <div className="max-w-[980px] mx-auto px-6 text-center">
+          <p className="text-sm font-medium text-[#E87532] mb-3 uppercase tracking-wide">About</p>
           <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6 tracking-tight">
+            The intersection of product, growth, and execution
+          </h2>
+          <p className="text-lg text-white/70 leading-relaxed max-w-3xl mx-auto mb-10 font-light">
+            I've spent my career at the intersection of product management and growth strategy — the place where user needs, business goals, and technical reality collide. That vantage point changes how you see problems.
+          </p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { num: "01", title: "Product Strategy", desc: "From vision to roadmap" },
+              { num: "02", title: "Growth Loops", desc: "Compound, don't leak" },
+              { num: "03", title: "User Research", desc: "Evidence over opinion" },
+              { num: "04", title: "Execution", desc: "Ship, measure, learn" },
+            ].map((item) => (
+              <div
+                key={item.num}
+                className="p-5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm"
+              >
+                <span className="text-xs font-medium text-[#E87532]">{item.num}</span>
+                <h3 className="font-semibold text-white mt-2 mb-1">{item.title}</h3>
+                <p className="text-xs text-white/50">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact — Compact, premium */}
+      <section id="contact" className="bg-[#F8FAFC] py-16">
+        <div className="max-w-[980px] mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-semibold text-[#17202A] mb-6 tracking-tight">
             Let&apos;s Connect
           </h2>
-          <p className="text-lg text-white/70 max-w-lg mx-auto mb-10">
+          <p className="text-lg text-[#4A5568] max-w-lg mx-auto mb-8">
             Have a growth challenge, want to collaborate, or just want to talk product? I&apos;d love to hear from you.
           </p>
           <a
