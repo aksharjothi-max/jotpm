@@ -148,7 +148,7 @@ export default function Home() {
             Let&apos;s Connect
           </h2>
           <p className="text-lg text-[#86868B] max-w-lg mx-auto mb-12">
-            Have a growth challenge, want to collaborate, or just want to talk product? I&apos;d love to hear from you.
+            Have a growth challenge, want to collaborate, or just want to talk product? I'd love to hear from you.
           </p>
           <a
             href="mailto:aksharjothi@gmail.com"

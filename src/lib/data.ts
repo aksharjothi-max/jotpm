@@ -1,3 +1,6 @@
+import fs from "fs";
+import path from "path";
+
 export interface Article {
   slug: string;
   title: string;
@@ -8,34 +11,42 @@ export interface Article {
   image?: string;
 }
 
+export interface Draft extends Article {
+  status: "pending" | "approved" | "published";
+  createdAt: string;
+}
+
+const DRAFTS_FILE = path.join(process.cwd(), "src/lib/drafts.json");
+
+export function getDrafts(): Draft[] {
+  if (!fs.existsSync(DRAFTS_FILE)) return [];
+  return JSON.parse(fs.readFileSync(DRAFTS_FILE, "utf-8"));
+}
+
+export function getDraftBySlug(slug: string): Draft | undefined {
+  return getDrafts().find((d) => d.slug === slug);
+}
+
+export function saveDraft(draft: Draft): void {
+  const drafts = getDrafts();
+  const existing = drafts.findIndex((d) => d.slug === draft.slug);
+  if (existing >= 0) {
+    drafts[existing] = draft;
+  } else {
+    drafts.push(draft);
+  }
+  fs.writeFileSync(DRAFTS_FILE, JSON.stringify(drafts, null, 2));
+}
+
 export function getArticles(): Article[] {
-  if (typeof window !== "undefined") return [];
-  const fs = require("fs");
-  const path = require("path");
-  const PUBLISHED_FILE = path.join(process.cwd(), "src/lib/published.json");
-  if (!fs.existsSync(PUBLISHED_FILE)) return [];
-  const articles: Article[] = JSON.parse(fs.readFileSync(PUBLISHED_FILE, "utf-8"));
-  return articles.sort((a: Article, b: Article) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // Read from published articles file or fall back to articles.ts
+  const publishedFile = path.join(process.cwd(), "src/lib/published.json");
+  if (fs.existsSync(publishedFile)) {
+    return JSON.parse(fs.readFileSync(publishedFile, "utf-8"));
+  }
+  return [];
 }
 
 export function getArticleBySlug(slug: string): Article | undefined {
   return getArticles().find((a) => a.slug === slug);
-}
-
-export function formatDate(dateStr: string): string {
-  const date = new Date(dateStr);
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const month = months[date.getMonth()];
-  const day = date.getDate();
-  const year = date.getFullYear();
-  const suffix = (d: number) => {
-    if (d > 3 && d < 21) return "th";
-    switch (d % 10) {
-      case 1: return "st";
-      case 2: return "nd";
-      case 3: return "rd";
-      default: return "th";
-    }
-  };
-  return `${month} ${day}${suffix(day)}, ${year}`;
 }
