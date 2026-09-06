@@ -19,9 +19,12 @@ export default function ReadingProgress() {
   }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-gray-200">
+    <div className="fixed top-12 left-0 right-0 z-[60] h-[2px] pointer-events-none">
+      {/* Track - subtle dark/light line */}
+      <div className="absolute inset-0 bg-gray-300/50 dark:bg-gray-700/50" />
+      {/* Progress fill - accent blue with glow */}
       <div
-        className="h-full bg-[#0071E3] transition-all duration-100"
+        className="absolute top-0 left-0 h-full bg-blue-600 dark:bg-blue-400 shadow-[0_0_10px_rgba(37,99,235,0.7)] dark:shadow-[0_0_10px_rgba(96,165,250,0.7)] transition-all duration-75 ease-out"
         style={{ width: `${progress}%` }}
       />
     </div>
