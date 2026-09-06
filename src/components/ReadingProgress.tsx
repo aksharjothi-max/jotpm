@@ -6,26 +6,37 @@ export default function ReadingProgress() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const updateProgress = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setProgress(scrollPercent);
+    const update = () => {
+      const top = window.scrollY;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(height > 0 ? (top / height) * 100 : 0);
     };
-
-    window.addEventListener("scroll", updateProgress);
-    updateProgress();
-    return () => window.removeEventListener("scroll", updateProgress);
+    window.addEventListener("scroll", update);
+    update();
+    return () => window.removeEventListener("scroll", update);
   }, []);
 
   return (
-    <div className="fixed top-12 left-0 right-0 z-[60] h-[2px] pointer-events-none">
-      {/* Track - subtle dark/light line */}
-      <div className="absolute inset-0 bg-gray-300/50 dark:bg-gray-700/50" />
-      {/* Progress fill - accent blue with glow */}
+    <div
+      style={{
+        position: "fixed",
+        top: "47px",
+        left: 0,
+        right: 0,
+        height: "4px",
+        zIndex: 9999,
+        background: "rgba(200, 200, 200, 0.3)",
+        pointerEvents: "none",
+      }}
+    >
       <div
-        className="absolute top-0 left-0 h-full bg-blue-600 dark:bg-blue-400 shadow-[0_0_10px_rgba(37,99,235,0.7)] dark:shadow-[0_0_10px_rgba(96,165,250,0.7)] transition-all duration-75 ease-out"
-        style={{ width: `${progress}%` }}
+        style={{
+          height: "100%",
+          width: `${progress}%`,
+          background: "linear-gradient(90deg, #0071E3 0%, #2997FF 100%)",
+          boxShadow: "0 0 12px rgba(0, 113, 227, 0.8), 0 0 20px rgba(0, 113, 227, 0.4)",
+          transition: "width 0.1s ease-out",
+        }}
       />
     </div>
   );
