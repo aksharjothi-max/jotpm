@@ -173,8 +173,9 @@ def generate_article_html(topic, date_str, article_id, content):
     <div class="container nav-inner">
       <a href="/" class="nav-logo">JotPM</a>
       <div class="nav-links">
-        <a href="/#about" class="nav-link">About</a>
         <a href="/blog.html" class="nav-link">Blog</a>
+        <a href="/about.html" class="nav-link">About</a>
+        <a href="mailto:aksharjothi@gmail.com" class="nav-cta">Contact</a>
       </div>
     </div>
   </nav>
@@ -219,7 +220,7 @@ def generate_article_html(topic, date_str, article_id, content):
         <div class="footer-links">
           <a href="/" class="footer-link">Home</a>
           <a href="/blog.html" class="footer-link">Blog</a>
-          <a href="/#about" class="footer-link">About</a>
+          <a href="/about.html" class="footer-link">About</a>
         </div>
         <div class="footer-social">
           <a href="https://github.com/aksharjothi-max" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

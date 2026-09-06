@@ -177,14 +177,28 @@ button {
 }
 
 .nav-cta {
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 1rem;
+  background: var(--blue);
+  color: var(--white) !important;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+}
+
+.nav-cta:hover {
+  background: var(--blue-hover);
+  text-decoration: none;
+  color: var(--white) !important;
 }
 
 /* ===== HERO — Apple Event style ===== */
 .hero {
   text-align: center;
   padding: 8rem 0 6rem;
-  background: linear-gradient(180deg, #0071E3 0%, #004A9E 100%);
+  background: linear-gradient(180deg, #1D1D1F 0%, #000000 100%);
   position: relative;
   overflow: hidden;
 }
@@ -193,7 +207,7 @@ button {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center top, rgba(255,255,255,0.15) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center top, rgba(255,255,255,0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -206,15 +220,22 @@ button {
   font-size: 5rem;
   font-weight: 700;
   letter-spacing: -0.05em;
-  color: #FFFFFF;
   margin-bottom: 1.5rem;
-  text-shadow: 0 0 80px rgba(255,255,255,0.6), 0 0 40px rgba(255,255,255,0.4);
+  text-shadow: 0 0 80px rgba(0,113,227,0.6), 0 0 40px rgba(0,113,227,0.4);
   animation: glow-pulse 3s ease-in-out infinite;
 }
 
+.hero-logo .jot {
+  color: #FFFFFF;
+}
+
+.hero-logo .pm {
+  color: #0071E3;
+}
+
 @keyframes glow-pulse {
-  0%, 100% { text-shadow: 0 0 80px rgba(255,255,255,0.6), 0 0 40px rgba(255,255,255,0.4); }
-  50% { text-shadow: 0 0 100px rgba(255,255,255,0.8), 0 0 60px rgba(255,255,255,0.6); }
+  0%, 100% { text-shadow: 0 0 80px rgba(0,113,227,0.6), 0 0 40px rgba(0,113,227,0.4); }
+  50% { text-shadow: 0 0 100px rgba(0,113,227,0.8), 0 0 60px rgba(0,113,227,0.6); }
 }
 
 .hero-headline {
@@ -227,31 +248,31 @@ button {
 
 .hero-subheadline {
   font-size: 1.125rem;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.7);
   margin-bottom: 2.5rem;
   max-width: 30rem;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* ===== HERO CTA (Green - Success/Go) ===== */
+/* ===== HERO CTA (Blue - Trust) ===== */
 .hero-cta {
   display: inline-block;
   padding: 0.875rem 2.25rem;
-  background: var(--green);
+  background: var(--blue);
   color: var(--white);
   font-size: 1.0625rem;
   font-weight: 600;
   border-radius: 9999px;
   transition: var(--transition);
-  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 16px rgba(0,113,227,0.3);
 }
 
 .hero-cta:hover {
-  background: var(--green-hover);
+  background: var(--blue-hover);
   color: var(--white);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 8px 24px rgba(0,113,227, 0.4);
 }
 
 /* ===== BUTTONS ===== */
@@ -260,20 +281,20 @@ button {
   align-items: center;
   gap: 0.375rem;
   padding: 0.75rem 1.75rem;
-  background: var(--green);
+  background: var(--blue);
   color: var(--white);
   font-size: 0.9375rem;
   font-weight: 500;
   border-radius: var(--radius-full);
   transition: var(--transition);
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 2px 8px rgba(0,113,227,0.2);
 }
 
 .btn-primary:hover {
-  background: var(--green-hover);
+  background: var(--blue-hover);
   text-decoration: none;
   color: var(--white);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 4px 12px rgba(0,113,227,0.3);
 }
 
 .btn-secondary {
