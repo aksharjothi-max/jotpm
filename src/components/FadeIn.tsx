@@ -13,6 +13,16 @@ export default function FadeIn({ children, delay = 0, className = "" }: FadeInPr
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    // Check if element is already visible on mount
+    const rect = element.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -20,10 +30,10 @@ export default function FadeIn({ children, delay = 0, className = "" }: FadeInPr
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+      { threshold: 0.05, rootMargin: "0px 0px -30px 0px" }
     );
 
-    if (ref.current) observer.observe(ref.current);
+    observer.observe(element);
     return () => observer.disconnect();
   }, [delay]);
 
@@ -31,7 +41,7 @@ export default function FadeIn({ children, delay = 0, className = "" }: FadeInPr
     <div
       ref={ref}
       className={`transition-all duration-700 ease-out ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
       } ${className}`}
     >
       {children}
