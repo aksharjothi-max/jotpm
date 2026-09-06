@@ -11,12 +11,18 @@ import os
 import json
 import subprocess
 import random
+import shutil
 from datetime import datetime, timedelta
 
 HOME = os.path.expanduser("~")
 JOTPM_DIR = os.path.join(HOME, "jotpm")
 ARTICLES_DIR = os.path.join(JOTPM_DIR, "articles")
 ARTICLES_DATA = os.path.join(JOTPM_DIR, "articles_data.json")
+
+# Find himalaya in PATH
+HIMALAYA = shutil.which("himalaya")
+if not HIMALAYA:
+    HIMALAYA = "/Users/aksharjothi/.local/bin/himalaya"
 
 # Article topics pool — rotates through these
 ARTICLE_TOPICS = [
@@ -415,19 +421,25 @@ def get_content(topic):
 
 def send_email(subject, body, to="aksharjothi@gmail.com"):
     """Send email using himalaya CLI."""
-    # Create a temporary file for the email body
+    # Build email with headers for piping
+    email_content = f"""From: aksharjothi@gmail.com
+To: {to}
+Subject: {subject}
+
+{body}
+"""
     tmp_file = "/tmp/jotpm_email.txt"
     with open(tmp_file, 'w') as f:
-        f.write(body)
+        f.write(email_content)
     
-    cmd = f'cat {tmp_file} | himalaya message send -H "To:{to}" -H "Subject:{subject}"'
-    stdout, stderr, rc = run(cmd, timeout=30)
+    cmd = f'cat {tmp_file} | himalaya message send'
+    stdout, stderr, rc = run(cmd, timeout=60)
     
-    if rc == 0:
+    if rc == 0 and "successfully" in stdout.lower():
         print(f"Email sent successfully to {to}")
         return True
     else:
-        print(f"Failed to send email: {stderr}")
+        print(f"Failed to send email: {stderr or stdout}")
         return False
 
 def main():

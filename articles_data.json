@@ -5,7 +5,11 @@
       "title": "The North Star Metric: Why Every Growth Team Needs One",
       "category": "Growth Strategy",
       "excerpt": "A single metric that best captures the core value your product delivers. How to define it, measure it, and align your entire organization around it.",
-      "tags": ["growth", "metrics", "strategy"],
+      "tags": [
+        "growth",
+        "metrics",
+        "strategy"
+      ],
       "date": "September 7, 2026",
       "filepath": "/Users/aksharjothi/jotpm/articles/first-article.html",
       "status": "published"
@@ -14,8 +18,13 @@
       "id": "antilibrary-of-pm",
       "title": "The Antilibrary of Product Management: Why You Should Collect More Ideas Than You Can Ever Use",
       "category": "Product Thinking",
-      "excerpt": "Nassim Taleb's antilibrary concept reveals why the best PMs build vast collections of unbuilt ideas — and how this paradox makes them smarter.",
-      "tags": ["antilibrary", "creativity", "decision-making", "product-thinking"],
+      "excerpt": "Nassim Taleb's antilibrary concept reveals why the best PMs build vast collections of unbuilt ideas \u2014 and how this paradox makes them smarter.",
+      "tags": [
+        "antilibrary",
+        "creativity",
+        "decision-making",
+        "product-thinking"
+      ],
       "date": "September 7, 2026",
       "filepath": "/Users/aksharjothi/jotpm/articles/antilibrary-of-pm.html",
       "status": "published"
@@ -24,8 +33,13 @@
       "id": "lighthouse-effect",
       "title": "The Lighthouse Effect: Why Product Teams Get Stuck Maintaining Instead of Building",
       "category": "Execution & Delivery",
-      "excerpt": "How maintenance quietly consumes your team's capacity — and the playbook for breaking free and getting back to building.",
-      "tags": ["lighthouse-effect", "team-capacity", "maintenance", "execution"],
+      "excerpt": "How maintenance quietly consumes your team's capacity \u2014 and the playbook for breaking free and getting back to building.",
+      "tags": [
+        "lighthouse-effect",
+        "team-capacity",
+        "maintenance",
+        "execution"
+      ],
       "date": "September 7, 2026",
       "filepath": "/Users/aksharjothi/jotpm/articles/lighthouse-effect.html",
       "status": "published"
@@ -34,12 +48,129 @@
       "id": "shadow-roadmap",
       "title": "The Shadow Roadmap: Building the Strategy No One Sees",
       "category": "Strategy",
-      "excerpt": "Why the most important roadmap you maintain is the one nobody sees — and how it becomes your competitive advantage.",
-      "tags": ["shadow-roadmap", "strategy", "planning", "leadership"],
+      "excerpt": "Why the most important roadmap you maintain is the one nobody sees \u2014 and how it becomes your competitive advantage.",
+      "tags": [
+        "shadow-roadmap",
+        "strategy",
+        "planning",
+        "leadership"
+      ],
       "date": "September 7, 2026",
       "filepath": "/Users/aksharjothi/jotpm/articles/shadow-roadmap.html",
       "status": "published"
+    },
+    {
+      "id": "daily-2026-09-06",
+      "title": "The Onboarding Moment: Where Products Win or Lose",
+      "category": "Growth Strategy",
+      "excerpt": "You have 30 seconds to prove value. How the best products turn first-time users into lifelong customers.",
+      "tags": [
+        "onboarding",
+        "activation",
+        "retention"
+      ],
+      "date": "September 06, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-06.html",
+      "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-06",
+      "title": "From Zero to One: Product Thinking for New Markets",
+      "category": "Product Thinking",
+      "excerpt": "When there's no playbook, no competitors, and no users yet. How to build when you're truly starting from scratch.",
+      "tags": [
+        "innovation",
+        "0-to-1",
+        "new-markets"
+      ],
+      "date": "September 06, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-06.html",
+      "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-06",
+      "title": "Building Products for People Who Don't Care",
+      "category": "Product Thinking",
+      "excerpt": "Not every user is passionate. How to design for the indifferent majority \u2014 and why that's where scale lives.",
+      "tags": [
+        "design",
+        "user-experience",
+        "scale"
+      ],
+      "date": "September 06, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-06.html",
+      "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-06",
+      "title": "The Art of Saying No: How Great PMs Prioritize",
+      "category": "Product Thinking",
+      "excerpt": "Every feature request sounds reasonable in isolation. Here's the framework that separates good PMs from great ones.",
+      "tags": [
+        "prioritization",
+        "strategy",
+        "decision-making"
+      ],
+      "date": "September 06, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-06.html",
+      "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-06",
+      "title": "The Feature Trap: When More Becomes Less",
+      "category": "Product Thinking",
+      "excerpt": "Why adding features can actually hurt your product \u2014 and how to know when simplicity is the real innovation.",
+      "tags": [
+        "simplicity",
+        "features",
+        "ux"
+      ],
+      "date": "September 06, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-06.html",
+      "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-06",
+      "title": "The Psychology of Pricing: It's Not About the Price",
+      "category": "Growth Strategy",
+      "excerpt": "How framing, anchoring, and perceived value matter more than the number on the price tag.",
+      "tags": [
+        "pricing",
+        "psychology",
+        "monetization"
+      ],
+      "date": "September 06, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-06.html",
+      "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-06",
+      "title": "The Pivot Decision: When to Persevere and When to Fold",
+      "category": "Strategy",
+      "excerpt": "How to know if your product needs a major change \u2014 and the data signals that should trigger the conversation.",
+      "tags": [
+        "pivot",
+        "strategy",
+        "data"
+      ],
+      "date": "September 06, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-06.html",
+      "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-06",
+      "title": "Stakeholder Management as a Superpower",
+      "category": "Execution & Delivery",
+      "excerpt": "The PM role is 20% product, 80% people. How to align executives, engineers, and designers without authority.",
+      "tags": [
+        "stakeholders",
+        "communication",
+        "leadership"
+      ],
+      "date": "September 06, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-06.html",
+      "status": "pending_review"
     }
   ],
-  "last_index": -1
+  "last_index": 7
 }
