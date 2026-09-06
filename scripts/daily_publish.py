@@ -152,9 +152,8 @@ def save_articles_data(data):
 
 def generate_article_html(topic, date_str, article_id, content):
     """Generate full HTML article."""
-    # Use the correct relative path for CSS/JS based on article location
-    css_path = "css/style.css"
-    js_path = "js/app.js"
+    css_path = "/css/style.css"
+    js_path = "/js/app.js"
     
     html = f'''<!DOCTYPE html>
 <html lang="en">
@@ -165,20 +164,18 @@ def generate_article_html(topic, date_str, article_id, content):
   <title>{topic['title']} — JotPM | Akshar Jothi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{css_path}">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
 </head>
 <body>
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
-      <a href="index.html" class="nav-logo">JotPM</a>
+      <a href="/" class="nav-logo">JotPM</a>
       <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="index.html#about" class="nav-link">About</a>
-        <a href="index.html#services" class="nav-link">Services</a>
-        <a href="blog.html" class="nav-link">Blog</a>
-        <a href="index.html#contact" class="nav-cta">Let's Talk</a>
+        <a href="/#about" class="nav-link">About</a>
+        <a href="/blog.html" class="nav-link">Blog</a>
+        <a href="/#contact" class="nav-link">Contact</a>
       </div>
     </div>
   </nav>
@@ -203,13 +200,13 @@ def generate_article_html(topic, date_str, article_id, content):
       {content}
     </div>
   </article>
-  <section class="section" style="background: var(--cream); padding-top: 0;">
+  <section class="section" style="background: var(--gray-10);">
     <div class="container">
       <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;">
         {"".join(f'<span class="tag">#{tag}</span>' for tag in topic['tags'])}
       </div>
       <div style="text-align: center; margin-top: 2rem;">
-        <a href="blog.html" class="btn-secondary">
+        <a href="/blog.html" class="btn-secondary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           Back to All Articles
         </a>
@@ -221,9 +218,9 @@ def generate_article_html(topic, date_str, article_id, content):
       <div class="footer-content">
         <div class="footer-logo">JotPM</div>
         <div class="footer-links">
-          <a href="index.html" class="footer-link">Home</a>
-          <a href="blog.html" class="footer-link">Blog</a>
-          <a href="index.html#about" class="footer-link">About</a>
+          <a href="/" class="footer-link">Home</a>
+          <a href="/blog.html" class="footer-link">Blog</a>
+          <a href="/#about" class="footer-link">About</a>
           <a href="mailto:aksharjothi@gmail.com" class="footer-link">Contact</a>
         </div>
         <div class="footer-social">
@@ -419,27 +416,32 @@ def get_content(topic):
     else:
         return generate_strategy_content(topic)
 
-def send_email(subject, body, to="aksharjothi@gmail.com"):
-    """Send email using himalaya CLI."""
+def send_email_html(subject, html_content, to="aksharjothi@gmail.com"):
+    """Send HTML email using himalaya CLI."""
+    tmp_file = "/tmp/jotpm_email.html"
+    with open(tmp_file, 'w') as f:
+        f.write(html_content)
+    
     # Build email with headers for piping
     email_content = f"""From: aksharjothi@gmail.com
 To: {to}
 Subject: {subject}
+Content-Type: text/html; charset=utf-8
 
-{body}
+{html_content}
 """
-    tmp_file = "/tmp/jotpm_email.txt"
-    with open(tmp_file, 'w') as f:
+    email_file = "/tmp/jotpm_email_full.txt"
+    with open(email_file, 'w') as f:
         f.write(email_content)
     
-    cmd = f'cat {tmp_file} | himalaya message send'
+    cmd = f'cat {email_file} | himalaya message send'
     stdout, stderr, rc = run(cmd, timeout=60)
     
     if rc == 0 and "successfully" in stdout.lower():
-        print(f"Email sent successfully to {to}")
+        print(f"HTML email sent successfully to {to}")
         return True
     else:
-        print(f"Failed to send email: {stderr or stdout}")
+        print(f"Failed to send HTML email: {stderr or stdout}")
         return False
 
 def main():
@@ -486,8 +488,12 @@ def main():
     data["last_index"] = next_index
     save_articles_data(data)
     
-    # Prepare email
+    # Prepare email with article content and approve button
     email_subject = f"[JotPM Review] {topic['title']} — {date_str}"
+    
+    # Build article content for email
+    article_content = content.replace('<p>', '').replace('</p>', '\n\n').replace('<h2>', '\n## ').replace('</h2>', '\n').replace('<h3>', '\n### ').replace('</h3>', '\n').replace('<strong>', '**').replace('</strong>', '**').replace('<em>', '*').replace('</em>', '*').replace('<blockquote>', '\n> ').replace('</blockquote>', '\n').replace('<ul>', '').replace('</ul>', '').replace('<li>', '- ').replace('</li>', '\n').replace('<ol>', '').replace('</ol>', '')
+    
     email_body = f"""Hi Akshar,
 
 Your daily JotPM article is ready for review.
@@ -499,14 +505,17 @@ Your daily JotPM article is ready for review.
 Preview:
 {topic['excerpt']}
 
-Tags: {', '.join(f'#{t}' for t in topic['tags'])}
+---
+
+{article_content}
 
 ---
-The article has been saved to: {filepath}
+
+Tags: {', '.join(f'#{t}' for t in topic['tags'])}
 
 To publish:
-1. Review the article
-2. Reply "approve" to this email
+1. Review the article above
+2. Click the "Approve & Publish" button below
 3. The article will be published to jotpm.vercel.app
 
 To edit:
@@ -518,8 +527,89 @@ To edit:
 JotPM Daily Publisher
 """
     
-    # Send email
-    send_email(email_subject, email_body)
+    # Build HTML email with approve button
+    approve_url = f"https://jotpm.vercel.app/articles/{article_id}.html"
+    
+    html_email = f"""<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{topic['title']} — JotPM Review</title>
+  <style>
+    body {{ font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; margin: 0; padding: 0; background: #F5F5F7; color: #1D1D1F; }}
+    .container {{ max-width: 600px; margin: 0 auto; padding: 2rem 1.5rem; }}
+    .card {{ background: #FFFFFF; border-radius: 1rem; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }}
+    .header {{ text-align: center; margin-bottom: 2rem; }}
+    .logo {{ font-size: 1.25rem; font-weight: 700; color: #1D1D1F; margin-bottom: 0.5rem; }}
+    .meta {{ font-size: 0.875rem; color: #86868B; }}
+    .category {{ display: inline-block; padding: 0.25rem 0.75rem; background: #E8F4FD; color: #0071E3; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }}
+    h1 {{ font-size: 1.75rem; font-weight: 700; color: #1D1D1F; line-height: 1.2; margin-bottom: 1rem; }}
+    .author {{ display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem; }}
+    .avatar {{ width: 2.5rem; height: 2.5rem; border-radius: 50%; background: linear-gradient(135deg, #0071E3, #0058B0); display: flex; align-items: center; justify-content: center; font-size: 0.875rem; font-weight: 700; color: #FFFFFF; }}
+    .author-name {{ font-size: 0.875rem; font-weight: 600; color: #1D1D1F; }}
+    .author-role {{ font-size: 0.75rem; color: #86868B; }}
+    .content {{ font-size: 1rem; line-height: 1.75; color: #424245; }}
+    .content p {{ margin-bottom: 1rem; }}
+    .content h2 {{ font-size: 1.25rem; font-weight: 700; color: #1D1D1F; margin: 1.5rem 0 0.75rem; }}
+    .content h3 {{ font-size: 1.0625rem; font-weight: 600; color: #1D1D1F; margin: 1.25rem 0 0.5rem; }}
+    .content blockquote {{ border-left: 3px solid #0071E3; padding: 0.75rem 1rem; margin: 1.5rem 0; background: #E8F4FD; border-radius: 0 0.5rem 0.5rem 0; font-style: italic; }}
+    .content ul, .content ol {{ margin: 1rem 0 1rem 1.5rem; }}
+    .content li {{ margin-bottom: 0.5rem; }}
+    .tags {{ display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }}
+    .tag {{ padding: 0.25rem 0.625rem; background: #F5F5F7; color: #424245; font-size: 0.75rem; border-radius: 9999px; }}
+    .cta {{ text-align: center; margin: 2rem 0; }}
+    .btn {{ display: inline-block; padding: 0.875rem 2rem; background: #0071E3; color: #FFFFFF; font-size: 1rem; font-weight: 600; border-radius: 9999px; text-decoration: none; }}
+    .btn:hover {{ background: #0077ED; }}
+    .footer {{ text-align: center; font-size: 0.75rem; color: #86868B; margin-top: 2rem; }}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <div class="logo">JotPM</div>
+        <div class="meta">{date_str}</div>
+      </div>
+      
+      <span class="category">{topic['category']}</span>
+      <h1>{topic['title']}</h1>
+      
+      <div class="author">
+        <div class="avatar">AJ</div>
+        <div>
+          <div class="author-name">Akshar Jothi</div>
+          <div class="author-role">Product Manager | Growth Strategy</div>
+        </div>
+      </div>
+      
+      <div class="content">
+        {content}
+      </div>
+      
+      <div class="tags">
+        {"".join(f'<span class="tag">#{tag}</span>' for tag in topic['tags'])}
+      </div>
+    </div>
+    
+    <div class="cta">
+      <a href="{approve_url}" class="btn">Approve & Publish</a>
+    </div>
+    
+    <div class="footer">
+      <p>JotPM Daily Publisher &copy; 2026</p>
+    </div>
+  </div>
+</body>
+</html>"""
+    
+    # Save HTML email to file
+    email_html_path = f"/tmp/jotpm_email_{article_id}.html"
+    with open(email_html_path, 'w') as f:
+        f.write(html_email)
+    
+    # Send email with HTML
+    send_email_html(email_subject, html_email, to)
     
     print(f"Article generated: {article_id}")
     print(f"File: {filepath}")
