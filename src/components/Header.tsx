@@ -9,19 +9,13 @@ export default function Header() {
         </Link>
         <nav className="flex items-center gap-8">
           <Link
-            href="/"
-            className="text-xs text-[#424245] hover:text-[#1D1D1F] transition-colors"
-          >
-            Home
-          </Link>
-          <Link
             href="/blog"
             className="text-xs text-[#424245] hover:text-[#1D1D1F] transition-colors"
           >
             Blog
           </Link>
           <Link
-            href="/about"
+            href="/#about"
             className="text-xs text-[#424245] hover:text-[#1D1D1F] transition-colors"
           >
             About
