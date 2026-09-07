@@ -15,7 +15,8 @@
       border: 1px solid #E8E8ED;
       border-radius: 0.75rem;
       padding: 1.5rem;
-      margin-bottom: 2rem;
+      margin: 2rem auto;
+      max-width: 62.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -78,15 +79,10 @@
       color: #065F46;
       padding: 1rem 1.5rem;
       border-radius: 0.75rem;
-      margin-bottom: 1.5rem;
+      margin: 2rem auto;
+      max-width: 62.5rem;
       font-size: 0.9375rem;
       font-weight: 500;
-    }
-    .preview-frame {
-      border: 2px solid #E8E8ED;
-      border-radius: 1rem;
-      overflow: hidden;
-      background: #FFFFFF;
     }
   </style>
 </head>
@@ -104,33 +100,29 @@
   </nav>
 
   <!-- Preview Banner -->
-  <div class="container" style="padding-top: 2rem;">
-    <div class="success-message" id="success-message">
-      ✅ Article published successfully! It's now live on the blog.
+  <div class="success-message" id="success-message">
+    ✅ Article published successfully! It's now live on the blog.
+  </div>
+  <div class="preview-banner" id="preview-banner">
+    <div class="preview-banner-text">
+      <strong>Preview Mode</strong> — This is how your article will look when published.
     </div>
-    <div class="preview-banner" id="preview-banner">
-      <div class="preview-banner-text">
-        <strong>Preview Mode</strong> — This is how your article will look when published.
-      </div>
-      <div class="preview-actions">
-        <button class="btn-preview-edit" onclick="window.history.back()">← Back</button>
-        <button class="btn-preview-publish" id="publish-btn" onclick="publishArticle()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Publish Article
-        </button>
-      </div>
+    <div class="preview-actions">
+      <button class="btn-preview-edit" onclick="window.history.back()">← Back</button>
+      <button class="btn-preview-publish" id="publish-btn" onclick="publishArticle()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Publish Article
+      </button>
     </div>
   </div>
 
   <!-- Article Preview -->
-  <div class="preview-frame">
-    <div id="article-container">
-      <!-- Article content loads here -->
-    </div>
+  <div id="article-container">
+    <!-- Article content loads here -->
   </div>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" style="margin-top: 0;">
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo"><span class="jot">Jot</span><span class="pm">PM</span></div>
@@ -160,7 +152,7 @@
     // Load article content
     async function loadArticle() {
       if (!articleId) {
-        document.getElementById('article-container').innerHTML = '<div class="container"><p>No article specified.</p></div>';
+        document.getElementById('article-container').innerHTML = '<div class="container"><p style="padding: 2rem;">No article specified.</p></div>';
         return;
       }
       
@@ -169,7 +161,6 @@
         if (!response.ok) throw new Error('Article not found');
         
         const html = await response.text();
-        // Extract the article content (between article tags)
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
         const articleHero = doc.querySelector('.article-hero');
@@ -182,11 +173,10 @@
         if (content) {
           document.getElementById('article-container').innerHTML = content;
         } else {
-          // Fallback: show full body content
           document.getElementById('article-container').innerHTML = doc.body.innerHTML;
         }
       } catch (error) {
-        document.getElementById('article-container').innerHTML = '<div class="container"><p>Article not found. It may not exist yet.</p></div>';
+        document.getElementById('article-container').innerHTML = '<div class="container"><p style="padding: 2rem;">Error loading article. Please try again.</p></div>';
       }
     }
     
@@ -196,19 +186,16 @@
       btn.disabled = true;
       btn.innerHTML = 'Publishing...';
       
-      // Show success message
       setTimeout(() => {
         document.getElementById('preview-banner').style.display = 'none';
         document.getElementById('success-message').style.display = 'block';
         
-        // Redirect to the article after 2 seconds
         setTimeout(() => {
           window.location.href = `/articles/${articleId}.html`;
         }, 2000);
       }, 1000);
     }
     
-    // Load article on page load
     loadArticle();
   </script>
 </body>
