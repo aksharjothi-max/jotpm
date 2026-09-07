@@ -426,7 +426,16 @@ button {
   color: var(--gray-50);
 }
 
-/* ===== BLOG ===== */
+/* ===== READ NEXT ===== */
+.read-next {
+  background: var(--gray-10);
+  padding-top: 3rem;
+}
+
+.read-next .section-title {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
 .blog {
   background: var(--white);
 }
