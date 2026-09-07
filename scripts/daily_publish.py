@@ -527,7 +527,7 @@ JotPM Daily Publisher
 """
     
     # Build HTML email with approve button
-    approve_url = f"https://jotpm.vercel.app/articles/{article_id}.html"
+    approve_url = f"https://jotpm.vercel.app/preview.html?article={article_id}"
     
     html_email = f"""<!DOCTYPE html>
 <html>
@@ -608,7 +608,7 @@ JotPM Daily Publisher
         f.write(html_email)
     
     # Send email with HTML
-    send_email_html(email_subject, html_email, to)
+    send_email_html(email_subject, html_email)
     
     print(f"Article generated: {article_id}")
     print(f"File: {filepath}")

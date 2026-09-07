@@ -170,7 +170,35 @@
       "date": "September 06, 2026",
       "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-06.html",
       "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-07",
+      "title": "The Onboarding Moment: Where Products Win or Lose",
+      "category": "Growth Strategy",
+      "excerpt": "You have 30 seconds to prove value. How the best products turn first-time users into lifelong customers.",
+      "tags": [
+        "onboarding",
+        "activation",
+        "retention"
+      ],
+      "date": "September 07, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-07.html",
+      "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-07",
+      "title": "User Interviews That Actually Change Decisions",
+      "category": "Product Thinking",
+      "excerpt": "Most user research is theater. Here's how to run interviews that produce real, actionable insights.",
+      "tags": [
+        "user-research",
+        "interviews",
+        "discovery"
+      ],
+      "date": "September 07, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-07.html",
+      "status": "pending_review"
     }
   ],
-  "last_index": 7
+  "last_index": 3
 }
