@@ -198,7 +198,21 @@
       "date": "September 07, 2026",
       "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-07.html",
       "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-08",
+      "title": "The Art of Saying No: How Great PMs Prioritize",
+      "category": "Product Thinking",
+      "excerpt": "Every feature request sounds reasonable in isolation. Here's the framework that separates good PMs from great ones.",
+      "tags": [
+        "prioritization",
+        "strategy",
+        "decision-making"
+      ],
+      "date": "September 08, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-08.html",
+      "status": "pending_review"
     }
   ],
-  "last_index": 3
+  "last_index": 0
 }
