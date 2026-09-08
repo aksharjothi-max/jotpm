@@ -3,7 +3,25 @@ document.addEventListener('DOMContentLoaded', function() {
   initScrollReveal();
   initSmoothScroll();
   loadRecentArticles();
+  initArticleProgress();
 });
+
+function initArticleProgress() {
+  const progressBar = document.getElementById('article-progress-bar');
+  if (!progressBar) return;
+
+  const articleContent = document.querySelector('.article-content');
+  if (!articleContent) return;
+
+  const articleTop = articleContent.offsetTop;
+  const articleHeight = articleContent.offsetHeight;
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const progress = Math.min(100, Math.max(0, ((scrollY - articleTop) / articleHeight) * 100));
+    progressBar.style.width = progress + '%';
+  });
+}
 
 function initScrollReveal() {
   const observer = new IntersectionObserver((entries) => {

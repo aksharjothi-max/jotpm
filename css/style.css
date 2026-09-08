@@ -426,6 +426,76 @@ button {
   color: var(--gray-50);
 }
 
+/* ===== ARTICLE PROGRESS BAR ===== */
+.article-progress {
+  position: sticky;
+  top: 3.5rem;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.05);
+  z-index: 99;
+}
+
+.article-progress-bar {
+  height: 100%;
+  background: var(--blue);
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
+
+/* ===== SOCIAL SHARING ===== */
+.social-share {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.social-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.social-share-btn.twitter {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.social-share-btn.twitter:hover {
+  background: #1a1a1a;
+}
+
+.social-share-btn.linkedin {
+  background: #0A66C2;
+  color: #FFFFFF;
+}
+
+.social-share-btn.linkedin:hover {
+  background: #084d94;
+}
+
+/* ===== GISCUS COMMENTS ===== */
+.comments-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--gray-20);
+}
+
+.comments-section h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 1.5rem;
+}
+
 /* ===== READ NEXT ===== */
 .read-next {
   background: var(--gray-10);
