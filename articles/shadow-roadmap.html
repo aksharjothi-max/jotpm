@@ -187,8 +187,8 @@
   <script>
     // Load Read Next in sidebar
     (function() {
-      const articleId = 'shadow-roadmap';
-      const articles = [
+      var articleId = "shadow-roadmap";
+      var articles = [
         { id: 'stakeholder-management', title: 'Stakeholder Management as a Superpower', category: 'Execution & Delivery' },
         { id: 'north-star-metric', title: 'The North Star Metric: Why Every Growth Team Needs One', category: 'Growth Strategy' },
         { id: 'antilibrary-of-pm', title: 'The Antilibrary of Product Management', category: 'Product Thinking' },
@@ -198,28 +198,62 @@
         { id: 'daily-2026-09-08', title: 'The Psychology of Pricing', category: 'Growth Strategy' }
       ];
       
-      const current = articles.find(a => a.id === articleId);
+      // Get read articles from localStorage
+      var readArticles = [];
+      try {
+        readArticles = JSON.parse(localStorage.getItem('jotpm_read_articles') || '[]');
+      } catch(e) {
+        readArticles = [];
+      }
+      
+      // Mark current article as read
+      if (readArticles.indexOf(articleId) === -1) {
+        readArticles.push(articleId);
+        localStorage.setItem('jotpm_read_articles', JSON.stringify(readArticles));
+      }
+      
+      var current = articles.filter(function(a) { return a.id === articleId; })[0];
       if (!current) return;
       
-      const recs = articles.filter(a => a.id !== articleId && a.category === current.category).slice(0, 3);
-      const container = document.getElementById('sidebar-read-next');
+      // Get recommendations: same category, not read, not current
+      var recs = articles.filter(function(a) { 
+        return a.id !== articleId && a.category === current.category && readArticles.indexOf(a.id) === -1; 
+      });
+      
+      // If no same-category articles, get latest unread articles
+      if (recs.length === 0) {
+        recs = articles.filter(function(a) { 
+          return a.id !== articleId && readArticles.indexOf(a.id) === -1; 
+        });
+      }
+      
+      // If still nothing, just show latest (even if read)
+      if (recs.length === 0) {
+        recs = articles.filter(function(a) { return a.id !== articleId; });
+      }
+      
+      recs = recs.slice(0, 3);
+      var container = document.getElementById('sidebar-read-next');
       
       if (recs.length === 0) {
-        container.innerHTML = '<p style="font-size: 0.8125rem; color: var(--gray-50);">No related articles yet.</p>';
+        container.innerHTML = '<p style="font-size: 0.8125rem; color: var(--gray-50);">No more articles yet.</p>';
         return;
       }
       
-      container.innerHTML = recs.map(a => `
-        <div class="sidebar-card" onclick="window.location.href='/articles/\${a.id}.html'">
-          <div class="sidebar-card-image" style="background: linear-gradient(135deg, #0071E3 0%, #0058B0 100%)">
-            <div style="color: white; font-size: 1.5rem; font-weight: 700;">\${a.category[0]}</div>
-          </div>
-          <div class="sidebar-card-body">
-            <div class="sidebar-card-category">\${a.category}</div>
-            <div class="sidebar-card-title">\${a.title}</div>
-          </div>
-        </div>
-      `).join('');
+      var html = '';
+      for (var i = 0; i < recs.length; i++) {
+        var a = recs[i];
+        html += '<div class="sidebar-card" onclick="window.location.href='/articles/' + a.id + '.html'">' +
+          '<div class="sidebar-card-image" style="background: linear-gradient(135deg, #0071E3 0%, #0058B0 100%)">' +
+            '<div style="color: white; font-size: 1.5rem; font-weight: 700;">' + a.category[0] + '</div>' +
+          '</div>' +
+          '<div class="sidebar-card-body">' +
+            '<div class="sidebar-card-category">' + a.category + '</div>' +
+            '<div class="sidebar-card-title">' + a.title + '</div>' +
+          '</div>' +
+        '</div>';
+      }
+      container.innerHTML = html;
     })();
   </script>
 </body>
