@@ -222,15 +222,15 @@
       var html = '';
       for (var i = 0; i < recs.length; i++) {
         var a = recs[i];
-        html += "<div class=\"sidebar-card\" onclick=\"window.location.href='/articles/" + a.id + ".html'\">" +
-          "<div class=\"sidebar-card-image\" style=\"background: linear-gradient(135deg, #0071E3 0%, #0058B0 100%)\">" +
-            "<div style=\"color: white; font-size: 1.5rem; font-weight: 700;\">" + a.category[0] + "</div>" +
-          "</div>" +
-          "<div class=\"sidebar-card-body\">" +
-            "<div class=\"sidebar-card-category\">" + a.category + "</div>" +
-            "<div class=\"sidebar-card-title\">" + a.title + "</div>" +
-          "</div>" +
-        "</div>";
+        html += '<div class="sidebar-card" onclick="window.location.href='/articles/' + a.id + '.html'">' +
+          '<div class="sidebar-card-image" style="background: linear-gradient(135deg, #0071E3 0%, #0058B0 100%)">' +
+            '<div style="color: white; font-size: 1.5rem; font-weight: 700;">' + a.category[0] + '</div>' +
+          '</div>' +
+          '<div class="sidebar-card-body">' +
+            '<div class="sidebar-card-category">' + a.category + '</div>' +
+            '<div class="sidebar-card-title">' + a.title + '</div>' +
+          '</div>' +
+        '</div>';
       }
       container.innerHTML = html;
     })();
