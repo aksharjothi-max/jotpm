@@ -192,29 +192,15 @@
         { id: 'daily-2026-09-08', title: 'The Psychology of Pricing', category: 'Growth Strategy' }
       ];
       
-      // Get read articles from localStorage
-      var readArticles = [];
-      try {
-        readArticles = JSON.parse(localStorage.getItem('jotpm_read_articles') || '[]');
-      } catch(e) {
-        readArticles = [];
-      }
-      
-      // Mark current article as read
-      if (readArticles.indexOf(articleId) === -1) {
-        readArticles.push(articleId);
-        localStorage.setItem('jotpm_read_articles', JSON.stringify(readArticles));
-      }
-      
       var current = articles.filter(function(a) { return a.id === articleId; })[0];
       if (!current) return;
       
-      // Get recommendations: same category, not current
+      // Get same category articles (not current)
       var recs = articles.filter(function(a) { 
         return a.id !== articleId && a.category === current.category; 
       });
       
-      // If less than 3 same-category, add from other categories
+      // If less than 3, add latest articles from other categories
       if (recs.length < 3) {
         var others = articles.filter(function(a) { 
           return a.id !== articleId && recs.indexOf(a) === -1; 
@@ -224,14 +210,8 @@
         }
       }
       
-      // Always show exactly 3 (or all available if less than 3 total)
       recs = recs.slice(0, 3);
       var container = document.getElementById('sidebar-read-next');
-      
-      if (recs.length === 0) {
-        container.innerHTML = '<p style="font-size: 0.8125rem; color: var(--gray-50);">No articles yet.</p>';
-        return;
-      }
       
       var html = '';
       for (var i = 0; i < recs.length; i++) {
