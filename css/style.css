@@ -429,25 +429,27 @@ button {
 /* ===== ARTICLE LAYOUT (News Style) ===== */
 .article-layout {
   display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 5rem;
+  grid-template-columns: 1fr auto;
+  gap: 0;
   max-width: 80rem;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 4rem;
 }
 
 .article-main {
   min-width: 0;
   max-width: 42rem;
-  justify-self: center;
+  grid-column: 1;
 }
 
 .article-sidebar {
   position: sticky;
   top: 5rem;
   height: fit-content;
-  padding-left: 2.5rem;
+  padding-left: 3rem;
   border-left: 1px solid var(--gray-20);
+  grid-column: 2;
+  width: 320px;
 }
 
 .sidebar-section {
