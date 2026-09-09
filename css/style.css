@@ -429,22 +429,24 @@ button {
 /* ===== ARTICLE LAYOUT (News Style) ===== */
 .article-layout {
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 4rem;
-  max-width: 75rem;
+  grid-template-columns: 1fr 400px;
+  gap: 5rem;
+  max-width: 80rem;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
 .article-main {
   min-width: 0;
+  max-width: 42rem;
+  justify-self: center;
 }
 
 .article-sidebar {
   position: sticky;
   top: 5rem;
   height: fit-content;
-  padding-left: 2rem;
+  padding-left: 2.5rem;
   border-left: 1px solid var(--gray-20);
 }
 
