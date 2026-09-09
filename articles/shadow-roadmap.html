@@ -215,28 +215,27 @@
       var current = articles.filter(function(a) { return a.id === articleId; })[0];
       if (!current) return;
       
-      // Get recommendations: same category, not read, not current
+      // Get recommendations: same category, not current
       var recs = articles.filter(function(a) { 
-        return a.id !== articleId && a.category === current.category && readArticles.indexOf(a.id) === -1; 
+        return a.id !== articleId && a.category === current.category; 
       });
       
-      // If no same-category articles, get latest unread articles
-      if (recs.length === 0) {
-        recs = articles.filter(function(a) { 
-          return a.id !== articleId && readArticles.indexOf(a.id) === -1; 
+      // If less than 3 same-category, add from other categories
+      if (recs.length < 3) {
+        var others = articles.filter(function(a) { 
+          return a.id !== articleId && recs.indexOf(a) === -1; 
         });
+        for (var i = 0; i < others.length && recs.length < 3; i++) {
+          recs.push(others[i]);
+        }
       }
       
-      // If still nothing, just show latest (even if read)
-      if (recs.length === 0) {
-        recs = articles.filter(function(a) { return a.id !== articleId; });
-      }
-      
+      // Always show exactly 3 (or all available if less than 3 total)
       recs = recs.slice(0, 3);
       var container = document.getElementById('sidebar-read-next');
       
       if (recs.length === 0) {
-        container.innerHTML = '<p style="font-size: 0.8125rem; color: var(--gray-50);">No more articles yet.</p>';
+        container.innerHTML = '<p style="font-size: 0.8125rem; color: var(--gray-50);">No articles yet.</p>';
         return;
       }
       
