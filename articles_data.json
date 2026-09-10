@@ -212,7 +212,35 @@
       "date": "September 08, 2026",
       "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-08.html",
       "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-09",
+      "title": "Shipping Fast vs. Shipping Right: The PM's Dilemma",
+      "category": "Execution & Delivery",
+      "excerpt": "Speed and quality aren't opposites \u2014 if you know when to optimize for each. A framework for the trade-off.",
+      "tags": [
+        "execution",
+        "speed",
+        "quality"
+      ],
+      "date": "September 09, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-09.html",
+      "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-10",
+      "title": "The Psychology of Pricing: It's Not About the Price",
+      "category": "Growth Strategy",
+      "excerpt": "How framing, anchoring, and perceived value matter more than the number on the price tag.",
+      "tags": [
+        "pricing",
+        "psychology",
+        "monetization"
+      ],
+      "date": "September 10, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-10.html",
+      "status": "pending_review"
     }
   ],
-  "last_index": 0
+  "last_index": 11
 }
