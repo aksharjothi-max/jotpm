@@ -527,7 +527,7 @@ JotPM Daily Publisher
 """
     
     # Build HTML email with approve button
-    approve_url = f"https://jotpm.vercel.app/preview.html?article={article_id}"
+    approve_url = f"https://jotpm.vercel.app/publish.html"
     
     html_email = f"""<!DOCTYPE html>
 <html>
