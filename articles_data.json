@@ -240,7 +240,52 @@
       "date": "September 10, 2026",
       "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-10.html",
       "status": "pending_review"
+    },
+    {
+      "id": "local-maximum-trap",
+      "title": "The Local Maximum Trap: Why Great Products Get Stuck",
+      "category": "Strategy",
+      "excerpt": "When optimization becomes the enemy of innovation. How to escape incremental improvement and find transformative growth.",
+      "tags": [
+        "strategy",
+        "innovation",
+        "product-thinking",
+        "local-maximum"
+      ],
+      "date": "September 10, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/local-maximum-trap.html",
+      "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-11",
+      "title": "Growth Loops vs. Funnels: The Modern Growth Model",
+      "category": "Growth Strategy",
+      "excerpt": "Funnels end. Loops compound. Why the best growth strategies are circular, not linear.",
+      "tags": [
+        "growth-loops",
+        "funnels",
+        "viral"
+      ],
+      "date": "September 11, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-11.html",
+      "status": "pending_review"
+    },
+    {
+      "id": "discovery-driven-planning",
+      "title": "Discovery-Driven Planning: Managing Projects with High Uncertainty",
+      "category": "Strategy",
+      "excerpt": "Traditional planning assumes you know the destination. Discovery-driven planning assumes you don't — and that's exactly why it works for the hardest problems PMs face.",
+      "tags": [
+        "discovery-driven-planning",
+        "strategy",
+        "uncertainty",
+        "learning"
+      ],
+      "date": "September 11, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/discovery-driven-planning.html",
+      "status": "pending_review",
+      "image": null
     }
   ],
-  "last_index": 11
+  "last_index": 15
 }
