@@ -273,6 +273,13 @@
       btn.disabled = true;
       btn.textContent = 'Publishing...';
       
+      // Helper function for Unicode-safe base64 encoding
+      function toBase64(str) {
+        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+          return String.fromCharCode('0x' + p1);
+        }));
+      }
+      
       try {
         // 1. Get current articles_data.json
         const dataResponse = await fetch(GITHUB_API + 'articles_data.json?ref=main', {
@@ -326,7 +333,7 @@
           },
           body: JSON.stringify({
             message: 'Publish article: ' + article.title,
-            content: btoa(JSON.stringify(articlesData, null, 2)),
+            content: toBase64(JSON.stringify(articlesData, null, 2)),
             sha: dataFile.sha,
             branch: 'main'
           })
@@ -346,7 +353,7 @@
           },
           body: JSON.stringify({
             message: 'Add article to blog: ' + article.title,
-            content: btoa(appContent),
+            content: toBase64(appContent),
             sha: appFile.sha,
             branch: 'main'
           })
