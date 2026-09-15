@@ -274,7 +274,7 @@
       "id": "discovery-driven-planning",
       "title": "Discovery-Driven Planning: Managing Projects with High Uncertainty",
       "category": "Strategy",
-      "excerpt": "Traditional planning assumes you know the destination. Discovery-driven planning assumes you don't — and that's exactly why it works for the hardest problems PMs face.",
+      "excerpt": "Traditional planning assumes you know the destination. Discovery-driven planning assumes you don't \u2014 and that's exactly why it works for the hardest problems PMs face.",
       "tags": [
         "discovery-driven-planning",
         "strategy",
@@ -285,7 +285,35 @@
       "filepath": "/Users/aksharjothi/jotpm/articles/discovery-driven-planning.html",
       "status": "pending_review",
       "image": null
+    },
+    {
+      "id": "daily-2026-09-14",
+      "title": "Shipping Fast vs. Shipping Right: The PM's Dilemma",
+      "category": "Execution & Delivery",
+      "excerpt": "Speed and quality aren't opposites \u2014 if you know when to optimize for each. A framework for the trade-off.",
+      "tags": [
+        "execution",
+        "speed",
+        "quality"
+      ],
+      "date": "September 14, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-14.html",
+      "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-15",
+      "title": "Retention Before Acquisition: The Growth Sequence",
+      "category": "Growth Strategy",
+      "excerpt": "Most startups die from leaky buckets, not empty funnels. Why fixing retention first is the smartest growth move.",
+      "tags": [
+        "retention",
+        "growth",
+        "metrics"
+      ],
+      "date": "September 15, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-15.html",
+      "status": "pending_review"
     }
   ],
-  "last_index": 15
+  "last_index": 1
 }

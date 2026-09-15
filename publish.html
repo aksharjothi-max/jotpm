@@ -278,6 +278,12 @@
         const dataResponse = await fetch(GITHUB_API + 'articles_data.json?ref=main', {
           headers: { 'Authorization': 'token ' + token }
         });
+        
+        if (!dataResponse.ok) {
+          const errorData = await dataResponse.json();
+          throw new Error('Failed to fetch articles_data.json: ' + (errorData.message || dataResponse.status));
+        }
+        
         const dataFile = await dataResponse.json();
         const articlesData = JSON.parse(atob(dataFile.content));
         
@@ -290,6 +296,12 @@
         const appResponse = await fetch(GITHUB_API + 'js/app.js?ref=main', {
           headers: { 'Authorization': 'token ' + token }
         });
+        
+        if (!appResponse.ok) {
+          const errorData = await appResponse.json();
+          throw new Error('Failed to fetch app.js: ' + (errorData.message || appResponse.status));
+        }
+        
         const appFile = await appResponse.json();
         let appContent = atob(appFile.content);
         
@@ -306,7 +318,7 @@
         }
         
         // 5. Push articles_data.json
-        await fetch(GITHUB_API + 'articles_data.json', {
+        const dataPushResponse = await fetch(GITHUB_API + 'articles_data.json', {
           method: 'PUT',
           headers: {
             'Authorization': 'token ' + token,
@@ -320,8 +332,13 @@
           })
         });
         
+        if (!dataPushResponse.ok) {
+          const errorData = await dataPushResponse.json();
+          throw new Error('Failed to update articles_data.json: ' + (errorData.message || dataPushResponse.status));
+        }
+        
         // 6. Push app.js
-        await fetch(GITHUB_API + 'js/app.js', {
+        const appPushResponse = await fetch(GITHUB_API + 'js/app.js', {
           method: 'PUT',
           headers: {
             'Authorization': 'token ' + token,
@@ -334,6 +351,11 @@
             branch: 'main'
           })
         });
+        
+        if (!appPushResponse.ok) {
+          const errorData = await appPushResponse.json();
+          throw new Error('Failed to update app.js: ' + (errorData.message || appPushResponse.status));
+        }
         
         // 7. Show success
         document.getElementById('success-message').style.display = 'block';
