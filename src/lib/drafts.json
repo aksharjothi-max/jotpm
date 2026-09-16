@@ -14,5 +14,21 @@
     "filepath": "/Users/aksharjothi/jotpm/articles/discovery-driven-planning.html",
     "status": "pending_review",
     "image": null
+  },
+  {
+    "id": "premortem",
+    "title": "The Pre-Mortem: How to Kill Your Product Before It Launches",
+    "category": "Strategy",
+    "excerpt": "Most teams run post-mortems — autopsies after something has already died. The pre-mortem flips this: you imagine the failure before it happens, and you use that imagination to prevent it.",
+    "tags": [
+      "pre-mortem",
+      "strategy",
+      "risk-management",
+      "decision-making"
+    ],
+    "date": "September 17, 2026",
+    "filepath": "/Users/aksharjothi/jotpm/articles/premortem.html",
+    "status": "pending_review",
+    "image": null
   }
 ]

@@ -313,7 +313,21 @@
       "date": "September 15, 2026",
       "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-15.html",
       "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-16",
+      "title": "The Onboarding Moment: Where Products Win or Lose",
+      "category": "Growth Strategy",
+      "excerpt": "You have 30 seconds to prove value. How the best products turn first-time users into lifelong customers.",
+      "tags": [
+        "onboarding",
+        "activation",
+        "retention"
+      ],
+      "date": "September 16, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-16.html",
+      "status": "pending_review"
     }
   ],
-  "last_index": 1
+  "last_index": 6
 }
