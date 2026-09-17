@@ -327,7 +327,21 @@
       "date": "September 16, 2026",
       "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-16.html",
       "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-17",
+      "title": "The Feature Trap: When More Becomes Less",
+      "category": "Product Thinking",
+      "excerpt": "Why adding features can actually hurt your product \u2014 and how to know when simplicity is the real innovation.",
+      "tags": [
+        "simplicity",
+        "features",
+        "ux"
+      ],
+      "date": "September 17, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-17.html",
+      "status": "pending_review"
     }
   ],
-  "last_index": 6
+  "last_index": 2
 }
