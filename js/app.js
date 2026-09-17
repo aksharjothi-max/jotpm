@@ -76,7 +76,7 @@ const articles = [
   {
     id: 'antilibrary-of-pm',
     title: 'The Antilibrary of Product Management',
-    excerpt: 'Why the best PMs build vast collections of unbuilt ideas — and how this paradox makes them smarter.',
+    excerpt: 'Why the best PMs build vast collections of unbuilt ideas â and how this paradox makes them smarter.',
     category: 'Product Thinking',
     date: '2026-09-07',
     image: 'linear-gradient(135deg, #424245 0%, #1D1D1F 100%)',
@@ -85,7 +85,7 @@ const articles = [
   {
     id: 'lighthouse-effect',
     title: 'The Lighthouse Effect',
-    excerpt: 'How maintenance quietly consumes your team\'s capacity — and the playbook for breaking free.',
+    excerpt: 'How maintenance quietly consumes your team\'s capacity â and the playbook for breaking free.',
     category: 'Execution',
     date: '2026-09-07',
     image: 'linear-gradient(135deg, #0071E3 0%, #424245 100%)',
@@ -94,13 +94,14 @@ const articles = [
   {
     id: 'shadow-roadmap',
     title: 'The Shadow Roadmap',
-    excerpt: 'Why the most important roadmap you maintain is the one nobody sees — and how it becomes your competitive advantage.',
+    excerpt: 'Why the most important roadmap you maintain is the one nobody sees â and how it becomes your competitive advantage.',
     category: 'Strategy',
     date: '2026-09-07',
     image: 'linear-gradient(135deg, #1D1D1F 0%, #0071E3 100%)',
     tags: ['roadmap', 'strategy', 'planning']
   }
-];
+,
+  { id: 'daily-2026-09-06', title: 'The Onboarding Moment: Where Products Win or Lose', excerpt: 'You have 30 seconds to prove value. How the best products turn first-time users into lifelong customers.', category: 'Growth Strategy', date: 'September 06, 2026', image: 'linear-gradient(135deg, #0071E3 0%, #0058B0 100%)', tags: ["onboarding","activation","retention"] }];
 
 function loadRecentArticles() {
   const container = document.getElementById('recent-articles');
