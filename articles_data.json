@@ -341,7 +341,35 @@
       "date": "September 17, 2026",
       "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-17.html",
       "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-18",
+      "title": "The Art of Saying No: How Great PMs Prioritize",
+      "category": "Product Thinking",
+      "excerpt": "Every feature request sounds reasonable in isolation. Here's the framework that separates good PMs from great ones.",
+      "tags": [
+        "prioritization",
+        "strategy",
+        "decision-making"
+      ],
+      "date": "September 18, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-18.html",
+      "status": "pending_review"
+    },
+    {
+      "id": "daily-2026-09-21",
+      "title": "User Interviews That Actually Change Decisions",
+      "category": "Product Thinking",
+      "excerpt": "Most user research is theater. Here's how to run interviews that produce real, actionable insights.",
+      "tags": [
+        "user-research",
+        "interviews",
+        "discovery"
+      ],
+      "date": "September 21, 2026",
+      "filepath": "/Users/aksharjothi/jotpm/articles/daily-2026-09-21.html",
+      "status": "pending_review"
     }
   ],
-  "last_index": 2
+  "last_index": 3
 }

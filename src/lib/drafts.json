@@ -30,5 +30,21 @@
     "filepath": "/Users/aksharjothi/jotpm/articles/premortem.html",
     "status": "pending_review",
     "image": null
+  },
+  {
+    "id": "invisible-backlog",
+    "title": "The Invisible Backlog: Why Your Team's Most Important Work Is the Stuff You Never Talk About",
+    "category": "Execution & Delivery",
+    "excerpt": "Every team has two backlogs: the one in Jira and the one nobody writes down. The invisible backlog — unresolved friction, compounding complexity, eroded trust — is what actually kills velocity.",
+    "tags": [
+      "invisible-backlog",
+      "team-velocity",
+      "technical-debt",
+      "team-health"
+    ],
+    "date": "September 22, 2026",
+    "filepath": "/Users/aksharjothi/jotpm/articles/invisible-backlog.html",
+    "status": "pending_review",
+    "image": null
   }
 ]
