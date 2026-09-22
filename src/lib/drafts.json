@@ -46,5 +46,21 @@
     "filepath": "/Users/aksharjothi/jotpm/articles/invisible-backlog.html",
     "status": "pending_review",
     "image": null
+  },
+  {
+    "id": "feedback-loop-illusion",
+    "title": "The Feedback Loop Illusion: Why You're Not Listening Even When You Think You Are",
+    "category": "Product Thinking",
+    "excerpt": "Modern PMs collect feedback like it's a sport. Hundreds of survey responses. Dozens of user interviews. A Slack channel full of power user requests. But the volume of listening has almost nothing to do with the quality of what you actually hear.",
+    "tags": [
+      "feedback",
+      "user-research",
+      "listening",
+      "product-thinking"
+    ],
+    "date": "September 23, 2026",
+    "filepath": "/Users/aksharjothi/jotpm/articles/feedback-loop-illusion.html",
+    "status": "pending_review",
+    "image": null
   }
 ]
