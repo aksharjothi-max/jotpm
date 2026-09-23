@@ -3,7 +3,7 @@
     "id": "discovery-driven-planning",
     "title": "Discovery-Driven Planning: Managing Projects with High Uncertainty",
     "category": "Strategy",
-    "excerpt": "Traditional planning assumes you know the destination. Discovery-driven planning assumes you don't — and that's exactly why it works for the hardest problems PMs face.",
+    "excerpt": "Traditional planning assumes you know the destination. Discovery-driven planning assumes you don't \u2014 and that's exactly why it works for the hardest problems PMs face.",
     "tags": [
       "discovery-driven-planning",
       "strategy",
@@ -19,7 +19,7 @@
     "id": "premortem",
     "title": "The Pre-Mortem: How to Kill Your Product Before It Launches",
     "category": "Strategy",
-    "excerpt": "Most teams run post-mortems — autopsies after something has already died. The pre-mortem flips this: you imagine the failure before it happens, and you use that imagination to prevent it.",
+    "excerpt": "Most teams run post-mortems \u2014 autopsies after something has already died. The pre-mortem flips this: you imagine the failure before it happens, and you use that imagination to prevent it.",
     "tags": [
       "pre-mortem",
       "strategy",
@@ -35,7 +35,7 @@
     "id": "invisible-backlog",
     "title": "The Invisible Backlog: Why Your Team's Most Important Work Is the Stuff You Never Talk About",
     "category": "Execution & Delivery",
-    "excerpt": "Every team has two backlogs: the one in Jira and the one nobody writes down. The invisible backlog — unresolved friction, compounding complexity, eroded trust — is what actually kills velocity.",
+    "excerpt": "Every team has two backlogs: the one in Jira and the one nobody writes down. The invisible backlog \u2014 unresolved friction, compounding complexity, eroded trust \u2014 is what actually kills velocity.",
     "tags": [
       "invisible-backlog",
       "team-velocity",
@@ -60,6 +60,23 @@
     ],
     "date": "September 23, 2026",
     "filepath": "/Users/aksharjothi/jotpm/articles/feedback-loop-illusion.html",
+    "status": "pending_review",
+    "image": null
+  },
+  {
+    "id": "second-order-effect",
+    "title": "The Second-Order Effect: How Today's Features Become Tomorrow's Constraints",
+    "category": "Product Thinking",
+    "excerpt": "Every feature you ship is a decision about the future. Not just the future you intended \u2014 but the futures you accidentally locked yourself into.",
+    "tags": [
+      "second-order-effect",
+      "product-thinking",
+      "constraints",
+      "decision-making",
+      "feature-management"
+    ],
+    "date": "September 23, 2026",
+    "filepath": "/Users/aksharjothi/jotpm/articles/second-order-effect.html",
     "status": "pending_review",
     "image": null
   }

@@ -1,0 +1,59 @@
+<article class="article-content">
+  <p class="lede">Every feature you ship is a decision about the future. Not just the future you intended — but the futures you accidentally locked yourself into.</p>
+
+  <h2>The Ripple You Don't See</h2>
+  
+  <p>When a PM proposes a "simple" feature — a new user role, a notification type, a filter option — the discussion usually stays at the first order. <em>What does this do? Who wants it? How long will it take?</em></p>
+  
+  <p>Almost nobody asks the second-order question: <strong>What does this feature make harder to build later?</strong></p>
+  
+  <p>A notification preference screen seems trivial. But three quarters later, when you want to consolidate your messaging system, that preference screen becomes a migration nightmare. Every feature carries a hidden price tag — not for building it, but for <em>living with it</em>.</p>
+
+  <h2>The Architecture of Accretion</h2>
+  
+  <p>Products don't collapse from one catastrophic decision. They collapse from a thousand small ones that seemed reasonable at the time. This is how technical debt accumulates, but it's also how <em>conceptual debt</em> grows.</p>
+  
+  <p>Consider a marketplace PM who adds a "favorite seller" feature. First order: users can bookmark preferred vendors. Second order: now sellers ask for analytics on who favorited them. Third order: users expect personalized feeds based on favorites. Fourth order: the engineering team is maintaining a recommendation engine nobody planned for.</p>
+  
+  <p>Each step was logical. Each step was requested by users. But the compounding effect is a product that's three times more complex than the team intended to maintain.</p>
+
+  <h2>Why PMs Miss It</h2>
+  
+  <p>Three cognitive biases conspire to hide second-order effects:</p>
+  
+  <p><strong>1. The optimism of abstraction.</strong> When you describe a feature in a spec, it's clean and self-contained. The real product is messy. Specs don't show you how this new toggle will interact with seven other toggles three sprints from now.</p>
+  
+  <p><strong>2. The immediacy gap.</strong> First-order benefits arrive in this quarter's metrics. Second-order costs arrive in next year's roadmap. The PM who ships the feature gets the win. The PM who inherits the complexity pays the price — often without connecting it back to the original decision.</p>
+  
+  <p><strong>3. The precedent blindspot.</strong> Every feature creates a precedent. Once you have one custom dashboard for enterprise clients, every enterprise deal expects a custom dashboard. The first one was a "strategic exception." The tenth one is a liability. But the precedent is set, and reversing it feels like breaking a promise.</p>
+
+  <h2>The Second-Order Audit</h2>
+  
+  <p>Great PMs develop the habit of running a quick second-order audit before greenlighting any feature. Three questions to ask:</p>
+  
+  <p><strong>What becomes harder?</strong> Not "what's the effort to build this" but "what future work does this constrain?" If you add a third authentication method today, you've just made every future auth-related feature 50% more complex.</p>
+  
+  <p><strong>What expectations does this set?</strong> Features teach users what to expect. If you introduce AI-powered suggestions in one place, users will expect them everywhere — and be annoyed where they're absent.</p>
+  
+  <strong>What's the exit cost?</strong> Before building, estimate the cost of removing it. If the exit cost is high, you need higher confidence in the feature's longevity.
+  
+  <h2>The Courage to Say "Not Now"</h2>
+  
+  <p>The most underrated skill in product management isn't saying no — it's saying <em>not now</em>. Because many second-order problems only become visible in hindsight, the best defense is optionality.</p>
+  
+  <p>Can you run this as a manual process first before automating? Can you test it with a subset of users before committing to a full rollout? Can you ship a version with fewer configuration options, keeping the underlying system flexible for future changes?</p>
+  
+  <p>The goal isn't to avoid building — it's to avoid building yourself into a corner.</p>
+
+  <h2>The Compound Interest of Simplicity</h2>
+  
+  <p>Here's the secret: second-order effects cut both ways. Every feature you <em>don't</em> build is capacity you preserve. Every simplification you make is a future decision you keep open.</p>
+  
+  <p>The best products feel simple not because their teams avoided complexity, but because they had the discipline to defer it. They resisted the feature that would have solved this quarter's problem at the cost of next year's flexibility.</p>
+  
+  <p>So the next time someone proposes a "quick win," ask the question that separates great PMs from busy ones:</p>
+  
+  <p><em>"What does this make impossible tomorrow?"</em></p>
+  
+  <p>Because in product management, the features you build shape what you can build next. And the best roadmaps aren't the ones packed with features — they're the ones that keep the most doors open.</p>
+</article>
